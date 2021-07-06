@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{66e19522-1e2b-4ca3-88a7-91214e112bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effectiveWater">
+      <UniqueIdentifier>{63e9406c-4f6d-4d9d-9222-75ce281134c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effectiveWater\shaders">
+      <UniqueIdentifier>{14ef685b-adbe-4ff2-ab9b-94690b80e168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effectiveWater\assets">
+      <UniqueIdentifier>{b0fdd7ff-a763-467f-820a-5d79666e4c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="waterCaustic">
+      <UniqueIdentifier>{f87d3282-b9fb-4ce2-bca7-4ff0d85e0a8f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\glad.c">
+      <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="effectiveWater\effectiveWater.cpp">
+      <Filter>effectiveWater</Filter>
+    </ClCompile>
+    <ClCompile Include="waterCaustic\waterCaustic.cpp">
+      <Filter>waterCaustic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tools\Camera.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Shader.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="effectiveWater\effectiveWater.h">
+      <Filter>effectiveWater</Filter>
+    </ClInclude>
+    <ClInclude Include="waterCaustic\waterCaustic.h">
+      <Filter>waterCaustic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="effectiveWater\shaders\frag.fs">
+      <Filter>effectiveWater\shaders</Filter>
+    </None>
+    <None Include="effectiveWater\shaders\vert.vs">
+      <Filter>effectiveWater\shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="effectiveWater\assets\water_mesh.txt">
+      <Filter>effectiveWater\assets</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
