@@ -112,6 +112,24 @@ public:
             Zoom = 45.0f;
     }
 
+    void setInitialStatus(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
+    {
+        Position = position;
+        Up = glm::normalize(up);
+        Yaw = yaw;
+        Pitch = pitch;
+
+        updateCameraVectors();
+    }
+
+    void printCameraParams()
+    {
+        std::cout << "Position: " <<  Position.x << " " << Position.y << " " << Position.z << std::endl;
+        std::cout << "Up: " << Up.x << " " << Up.y << " " << Up.z << std::endl;
+        std::cout << "Yaw: " << Yaw << std::endl;
+        std::cout << "Pitch: " << Pitch << std::endl;
+    }
+
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()

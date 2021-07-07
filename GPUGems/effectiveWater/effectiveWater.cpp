@@ -1,210 +1,16 @@
-﻿#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <cmath>
-#include <vector>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+﻿//#include <glad/glad.h>
+//#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <time.h>
 
 #include "effectiveWater.h"
+#include "../tools/Maths.h"
+#include "../tools/Utility.h"
 
 const int num_func = 3;
 
-template<typename T>
-T RandT(T _min, T _max)
-{
-    T temp;
-    if (_min > _max)
-    {
-        temp = _max;
-        _max = _min;
-        _min = temp;
-    }
-
-    return rand() / (double)RAND_MAX * (_max - _min) + _min;
-}
-
-std::vector<float> random_dir()
-{
-    float u = RandT<float>(0, RAND_MAX);
-    float cos = std::cos(u);
-    float sin = std::sin(u);
-    std::vector<float> vec = { cos, sin };
-    return vec;
-}
-
-std::vector<float> random_dir(float theta_min, float theta_max)
-{
-    float u = RandT<float>(theta_min, theta_max);
-    float cos = std::cos(u);
-    float sin = std::sin(u);
-    std::vector<float> vec = { cos, sin };
-    return vec;
-}
-
-std::vector<std::string> split(const std::string& line, char c)
-{
-    std::vector<std::string> vec;
-    int start = 0, end = 0;
-    while (end != line.length())
-    {
-        if (line[end] != c)
-            end++;
-        else
-        {
-            vec.push_back(line.substr(start, end - start));
-
-            start = end + 1;
-            end++;
-        }
-    }
-    if (start < end)
-        vec.push_back(line.substr(start, end - start));
-
-    return vec;
-}
-
-void generate_mesh(const char* str, int width, int height)
-{
-    std::ofstream out(str);
-
-    double length_x = 2.0, length_z = 2.0;
-
-    double delta_x = length_x / width;
-    double delta_z = length_z / height;
-
-    double x, y, z;
-    double start_x = -length_x / 2.0, start_z = -length_z / 2.0;
-
-    out << "#vertex_num: " << (width + 1) * (height + 1) << std::endl;
-    out << "#triangle_num: " << width * height * 2 << std::endl;
-    out << std::endl;
-
-    for (int i = 0; i < width + 1; i++)
-    {
-        for (int j = 0; j < height + 1; j++)
-        {
-            x = start_x + delta_x * i;
-            y = 0;
-            z = start_z + delta_z * j;
-
-            out << "v " << x << " " << y << " " << z << std::endl;
-        }
-    }
-    
-    out << std::endl;
-
-    int ind_0, ind_1, ind_2;
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            ind_0 = i * (height + 1) + j + 1;
-            ind_1 = i * (height + 1) + j + 2;
-            ind_2 = (i + 1) * (height + 1) + j + 1;
-
-            out << "f " << ind_0 << " " << ind_1 << " " << ind_2 << std::endl;
-
-            ind_0 = i * (height + 1) + j + 2;
-            ind_1 = (i + 1) * (height + 1) + j + 2;
-            ind_2 = (i + 1) * (height + 1) + j + 1;
-
-            out << "f " << ind_0 << " " << ind_1 << " " << ind_2 << std::endl;
-        }
-    }
-
-    out.close();
-}
-
-void load_mesh(const char* str, float* vertex, unsigned int* index)
-{
-    std::ifstream m_file(str);
-    std::string line;
-    std::vector<std::string> split_line;
-    if (m_file.is_open())
-    {
-        int i = 0, j = 0;
-        while (std::getline(m_file, line))
-        {
-            if (line.empty())
-                continue;
-            if (line[0] == '#')
-                continue;
-
-            split_line = split(line, ' ');
-            
-            if (split_line[0] == "v")
-            {
-                vertex[i++] = std::stof(split_line[1]);
-                vertex[i++] = std::stof(split_line[2]);
-                vertex[i++] = std::stof(split_line[3]);
-            }
-
-            else if (split_line[0] == "f")
-            {
-                index[j++] = static_cast<unsigned int>(std::stoi(split_line[1]) - 1);
-                index[j++] = static_cast<unsigned int>(std::stoi(split_line[2]) - 1);
-                index[j++] = static_cast<unsigned int>(std::stoi(split_line[3]) - 1);
-            }
-            else
-            {
-
-            }
-        }
-        m_file.close();
-    }
-    else
-    {
-        std::cout << "failed to open file " << str << std::endl;
-    }
-}
-
-void Gerstner(float* vertex, int width, int height, float time, const std::vector<float>& amplitude, const std::vector<float>& wavelength, const std::vector<float>& speed, const std::vector<std::vector<float>>& dir)
-{
-    int len = amplitude.size();
-    float omega, y_pos;
- 
-    for (int i = 0; i < width + 1; i++)
-    {
-        for (int j = 0; j < height + 1; j++)
-        {
-            y_pos = 0;
-            for (int n = 0; n < len; n++)
-            {
-                omega = 2.0f / wavelength[n];
-                y_pos += amplitude[n] * sin(omega * (dir[n][0] * i + dir[n][1] * j) + time * speed[n] * omega);
-            }
-            
-            vertex[(i * (height + 1) + j) * 3 + 1] = y_pos;
-        }
-    }
-}
-
-void Gerstner(float* vertex, int width, int height, float time)
-{
-    float amplitude = 0.05f;
-    float wavelength = 4.0f;
-    float omega = 2.0 / wavelength;
-    float speed = 4.0f;
-    float y_pos;
-
-    float dir[2] = { 0.5f, 0.5f };
-
-    for (int i = 0; i < width + 1; i++)
-    {
-        for (int j = 0; j < height + 1; j++)
-        {
-            y_pos = amplitude * sin(omega * (dir[0] * i + dir[1] * j) + time * speed * omega);
-            vertex[(i * (height + 1) + j) * 3 + 1] = y_pos;
-        }
-    }
-}
 
 void show_effective_water(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT, processInputCallback processInput)
 {
@@ -293,6 +99,7 @@ void show_effective_water(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     shader.setFloat("k", 2.5);
     shader.setFloat("Q", Q);
 
+    camera.setInitialStatus(glm::vec3(-0.6, 1.0, 2.3), glm::vec3(0.125, 0.9, -0.4), -72, -24);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -301,12 +108,6 @@ void show_effective_water(GLFWwindow* window, Camera& camera, unsigned int SCR_W
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
-
-        //Gerstner(water_mesh_vertex, res_x, res_y, currentFrame, amplitude, wavelength, speed, dir);
-        //Gerstner(water_mesh_vertex, res_x, res_y, currentFrame);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertex_num * 3, water_mesh_vertex, GL_DYNAMIC_DRAW);
 
         processInput(window, deltaTime);
 

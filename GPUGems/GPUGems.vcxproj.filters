@@ -28,6 +28,9 @@
     <Filter Include="waterCaustic">
       <UniqueIdentifier>{f87d3282-b9fb-4ce2-bca7-4ff0d85e0a8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="waterCaustic\shaders">
+      <UniqueIdentifier>{f214ec39-faef-47c7-b17a-7e8fd5659bb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="waterCaustic\waterCaustic.cpp">
       <Filter>waterCaustic</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Maths.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Utility.cpp">
+      <Filter>tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +65,15 @@
     <ClInclude Include="waterCaustic\waterCaustic.h">
       <Filter>waterCaustic</Filter>
     </ClInclude>
+    <ClInclude Include="tools\stb_image.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Maths.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Utility.h">
+      <Filter>tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="effectiveWater\shaders\frag.fs">
@@ -63,6 +81,12 @@
     </None>
     <None Include="effectiveWater\shaders\vert.vs">
       <Filter>effectiveWater\shaders</Filter>
+    </None>
+    <None Include="waterCaustic\shaders\frag.fs">
+      <Filter>waterCaustic\shaders</Filter>
+    </None>
+    <None Include="waterCaustic\shaders\vert.vs">
+      <Filter>waterCaustic\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

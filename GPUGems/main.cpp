@@ -7,6 +7,7 @@
 #include "tools/Shader.h"
 
 #include "effectiveWater/effectiveWater.h"
+#include "waterCaustic/waterCaustic.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -38,7 +39,9 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "EffectiveWater", NULL, NULL);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "GPUGems", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "failed to create GLFW window" << std::endl;
@@ -59,9 +62,29 @@ int main()
         return -1;
     }
 
-    //effective water
-    show_effective_water(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    // 0 : effective water
+    // 1 : water caustic
+
+    int demo = 1;
+
+    switch (demo)
+    {
+    case 0:
+        glfwSetWindowTitle(window, "effective water");
+        show_effective_water(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
+    case 1:
+        glfwSetWindowTitle(window, "water caustic");
+        show_water_caustic(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
+    default:
+        break;
+    }
+
+    return 0;
 }
+
+
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
