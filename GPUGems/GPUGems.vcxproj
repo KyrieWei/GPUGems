@@ -153,14 +153,17 @@
     <ClInclude Include="tools\Maths.h" />
     <ClInclude Include="tools\Shader.h" />
     <ClInclude Include="tools\stb_image.h" />
+    <ClInclude Include="tools\stb_image_write.h" />
     <ClInclude Include="tools\Utility.h" />
     <ClInclude Include="waterCaustic\waterCaustic.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="effectiveWater\shaders\frag.fs" />
     <None Include="effectiveWater\shaders\vert.vs" />
-    <None Include="waterCaustic\shaders\frag.fs" />
-    <None Include="waterCaustic\shaders\vert.vs" />
+    <None Include="waterCaustic\shaders\ground_frag.fs" />
+    <None Include="waterCaustic\shaders\ground_vert.vs" />
+    <None Include="waterCaustic\shaders\water_surface_frag.fs" />
+    <None Include="waterCaustic\shaders\water_surface_vert.vs" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt" />

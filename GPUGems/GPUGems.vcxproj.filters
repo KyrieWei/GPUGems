@@ -74,6 +74,9 @@
     <ClInclude Include="tools\Utility.h">
       <Filter>tools</Filter>
     </ClInclude>
+    <ClInclude Include="tools\stb_image_write.h">
+      <Filter>tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="effectiveWater\shaders\frag.fs">
@@ -82,10 +85,16 @@
     <None Include="effectiveWater\shaders\vert.vs">
       <Filter>effectiveWater\shaders</Filter>
     </None>
-    <None Include="waterCaustic\shaders\frag.fs">
+    <None Include="waterCaustic\shaders\ground_frag.fs">
       <Filter>waterCaustic\shaders</Filter>
     </None>
-    <None Include="waterCaustic\shaders\vert.vs">
+    <None Include="waterCaustic\shaders\ground_vert.vs">
+      <Filter>waterCaustic\shaders</Filter>
+    </None>
+    <None Include="waterCaustic\shaders\water_surface_frag.fs">
+      <Filter>waterCaustic\shaders</Filter>
+    </None>
+    <None Include="waterCaustic\shaders\water_surface_vert.vs">
       <Filter>waterCaustic\shaders</Filter>
     </None>
   </ItemGroup>

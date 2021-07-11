@@ -50,6 +50,11 @@ void generate_mesh(const char* str, int res_x, int res_y, double width, double h
             z = start_z + delta_z * j;
 
             out << "v " << x << " " << y << " " << z << std::endl;
+
+            double u = (double)i / res_x;
+            double v = (double)j / res_y;
+
+            out << "t " << u << " " << v << std::endl;
         }
     }
 
@@ -101,7 +106,11 @@ void load_mesh(const char* str, float* vertex, unsigned int* index)
                 vertex[i++] = std::stof(split_line[2]);
                 vertex[i++] = std::stof(split_line[3]);
             }
-
+            else if(split_line[0] == "t")
+            {
+                vertex[i++] = std::stof(split_line[1]);
+                vertex[i++] = std::stof(split_line[2]);
+            }
             else if (split_line[0] == "f")
             {
                 index[j++] = static_cast<unsigned int>(std::stoi(split_line[1]) - 1);
