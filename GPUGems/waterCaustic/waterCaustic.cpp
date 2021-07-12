@@ -164,7 +164,7 @@ void show_water_caustic(GLFWwindow* window, Camera& camera, unsigned int SCR_WID
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    //generate_png(200);
+    //generate_png(140);
 
     int sky_texture_width, sky_texture_height, sky_texture_channel;
     unsigned char* sky_texture_data = stbi_load("waterCaustic/assets/sky_transparent.png", &sky_texture_width, &sky_texture_height, &sky_texture_channel, 0);
@@ -226,6 +226,39 @@ void show_water_caustic(GLFWwindow* window, Camera& camera, unsigned int SCR_WID
 
 #pragma endregion
 
+    Shader water_caustic_shader("waterCaustic/shaders/water_caustic_vert.vs", "waterCaustic/shaders/water_caustic_frag.fs");
+
+    unsigned int sun_texture;
+    glGenTextures(1, &sun_texture);
+
+    glBindTexture(GL_TEXTURE_2D, sun_texture);
+
+    //set wrap and fliter mode
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    int sun_texture_width, sun_texture_height, sun_texture_channel;
+    unsigned char* sun_texture_data = stbi_load("waterCaustic/assets/sky3.tga", &sun_texture_width, &sun_texture_height, &sun_texture_channel, 0);
+
+    if (sun_texture_data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, sun_texture_width, sun_texture_height, 0, GL_RED, GL_UNSIGNED_BYTE, sun_texture_data);
+    }
+    else
+    {
+        std::cout << "failed to load sun texture" << std::endl;
+    }
+
+    stbi_image_free(sun_texture_data);
+
+    glm::vec3 lightColor = glm::vec3(0.7, 0.7, 0.7);
+
+    water_caustic_shader.use();
+    water_caustic_shader.setFloat("k", 2.5);
+    water_caustic_shader.setFloat("Q", Q);
+    water_caustic_shader.setVec3("lightColor", lightColor);
 
     //MSAA
     glEnable(GL_MULTISAMPLE);
@@ -263,6 +296,21 @@ void show_water_caustic(GLFWwindow* window, Camera& camera, unsigned int SCR_WID
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, water_ground_index_num, GL_UNSIGNED_INT, 0);
 
+        //water caustic
+        water_caustic_shader.use();
+        model = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 0.001, 0.0));
+
+        water_caustic_shader.setMat4("model", model);
+        water_caustic_shader.setMat4("projection", projection); 
+        water_caustic_shader.setMat4("view", view);
+
+        water_caustic_shader.setFloat("_Time", currentFrame);
+
+        glBindTexture(GL_TEXTURE_2D, sun_texture);
+
+        glBindVertexArray(surface_VAO);
+        glDrawElements(GL_TRIANGLES, tri_num * 3, GL_UNSIGNED_INT, 0);
+
         //water surface
         water_surface_shader.use();
 
@@ -277,6 +325,8 @@ void show_water_caustic(GLFWwindow* window, Camera& camera, unsigned int SCR_WID
 
         glBindVertexArray(surface_VAO);
         glDrawElements(GL_TRIANGLES, tri_num * 3, GL_UNSIGNED_INT, 0);
+
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

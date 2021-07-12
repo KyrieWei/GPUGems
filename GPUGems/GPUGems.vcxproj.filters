@@ -97,6 +97,12 @@
     <None Include="waterCaustic\shaders\water_surface_vert.vs">
       <Filter>waterCaustic\shaders</Filter>
     </None>
+    <None Include="waterCaustic\shaders\water_caustic_vert.vs">
+      <Filter>waterCaustic\shaders</Filter>
+    </None>
+    <None Include="waterCaustic\shaders\water_caustic_frag.fs">
+      <Filter>waterCaustic\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt">

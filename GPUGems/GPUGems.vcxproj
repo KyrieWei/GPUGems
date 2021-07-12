@@ -162,6 +162,8 @@
     <None Include="effectiveWater\shaders\vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
+    <None Include="waterCaustic\shaders\water_caustic_frag.fs" />
+    <None Include="waterCaustic\shaders\water_caustic_vert.vs" />
     <None Include="waterCaustic\shaders\water_surface_frag.fs" />
     <None Include="waterCaustic\shaders\water_surface_vert.vs" />
   </ItemGroup>
