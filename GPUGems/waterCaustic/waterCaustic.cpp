@@ -335,6 +335,13 @@ void show_water_caustic(GLFWwindow* window, Camera& camera, unsigned int SCR_WID
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
+    glDeleteBuffers(1, &water_surface_uboBlock);
+    glDeleteBuffers(1, &surface_VAO);
+    glDeleteBuffers(1, &surface_VBO);
+    glDeleteBuffers(1, &surface_EBO);
+
+    delete[] water_surface_vertex;
+    delete[] water_surface_index;
 
     glfwTerminate();
 

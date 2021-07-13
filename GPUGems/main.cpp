@@ -8,6 +8,7 @@
 
 #include "effectiveWater/effectiveWater.h"
 #include "waterCaustic/waterCaustic.h"
+#include "countlessGrass/countlessGrass.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -65,7 +66,7 @@ int main()
     // 0 : effective water
     // 1 : water caustic
 
-    int demo = 1;
+    int demo = 2;
 
     switch (demo)
     {
@@ -77,6 +78,9 @@ int main()
         glfwSetWindowTitle(window, "water caustic");
         show_water_caustic(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
         break;
+    case 2:
+        glfwSetWindowTitle(window, "countless grass");
+        show_countless_grass(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

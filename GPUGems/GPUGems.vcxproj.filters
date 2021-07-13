@@ -31,6 +31,12 @@
     <Filter Include="waterCaustic\shaders">
       <UniqueIdentifier>{f214ec39-faef-47c7-b17a-7e8fd5659bb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="countlessGrass">
+      <UniqueIdentifier>{308cc556-a075-4fe1-90b5-ad7edb8930e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="countlessGrass\shaders">
+      <UniqueIdentifier>{3f6353b5-f0ba-4c9d-8719-05ff7023b2d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="tools\Utility.cpp">
       <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="countlessGrass\countlessGrass.cpp">
+      <Filter>countlessGrass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +86,9 @@
     <ClInclude Include="tools\stb_image_write.h">
       <Filter>tools</Filter>
     </ClInclude>
+    <ClInclude Include="countlessGrass\countlessGrass.h">
+      <Filter>countlessGrass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="effectiveWater\shaders\frag.fs">
@@ -102,6 +114,12 @@
     </None>
     <None Include="waterCaustic\shaders\water_caustic_frag.fs">
       <Filter>waterCaustic\shaders</Filter>
+    </None>
+    <None Include="countlessGrass\shaders\ground_vert.vs">
+      <Filter>countlessGrass\shaders</Filter>
+    </None>
+    <None Include="countlessGrass\shaders\ground_frag.fs">
+      <Filter>countlessGrass\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
