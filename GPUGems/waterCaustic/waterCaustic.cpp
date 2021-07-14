@@ -1,13 +1,13 @@
 #include "waterCaustic.h"
+#include "../tools/Utility.h"
+#include "../tools/Maths.h"
 
 #define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_STATIC
 #include "../tools/stb_image.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../tools/stb_image_write.h"
-
-#include "../tools/Utility.h"
-#include "../tools/Maths.h"
 
 void generate_png(int alpha)
 {

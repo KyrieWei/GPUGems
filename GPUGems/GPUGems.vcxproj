@@ -160,6 +160,9 @@
     <ClInclude Include="waterCaustic\waterCaustic.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="countlessGrass\shaders\grass_frag.fs" />
+    <None Include="countlessGrass\shaders\grass_geom.gs" />
+    <None Include="countlessGrass\shaders\grass_vert.vs" />
     <None Include="countlessGrass\shaders\ground_frag.fs" />
     <None Include="countlessGrass\shaders\ground_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />
