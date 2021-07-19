@@ -4,11 +4,10 @@ out vec4 fragColor;
 
 in vec2 texCoord;
 
-uniform sampler2D grass_mask;
+uniform sampler2D ground_texture;
 
 void main()
 {
-    float alpha = texture(grass_mask, texCoord).r;
-
-    fragColor = vec4(1.0, 1.0, 1.0, alpha);
+    vec3 color = texture(ground_texture, texCoord).rgb;
+    fragColor = vec4(color, 1.0);
 }

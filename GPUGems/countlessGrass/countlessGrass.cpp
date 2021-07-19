@@ -54,53 +54,24 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
 
     Shader ground_shader("countlessGrass/shaders/ground_vert.vs", "countlessGrass/shaders/ground_frag.fs");
 
-    int res_x = 400, res_y = 400, ground_width = 40, ground_height = 40;
+    int res_x = 400, res_y = 400, ground_x = 40, ground_y = 2, ground_z = 40;
     int ground_vertex_num = (res_x + 1) * (res_y + 1);
     int ground_tri_num = res_x * res_y * 2;
 
     int stride = 5;
+    
+    float* ground_vertex_data = new float[ground_vertex_num * stride];
+    unsigned int* ground_index = new unsigned int[ground_tri_num * 3];
 
-    float vertices[] = {
-        // positions         // texture coords
-         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,  1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,  0.0f, 1.0f  // top left 
-    };
-
-    unsigned int indices[] = {
-    0, 1, 3, // first triangle
-    1, 2, 3  // second triangle
-    };
-
-    unsigned int VBO, VAO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+    //int height_map_width, height_map_height, height_map_channel;
+    //unsigned char* height_map_data = stbi_load("countlessGrass/assets/Heightmap.png", &height_map_width, &height_map_height, &height_map_channel, 0);
+    //if (!height_map_data)
+    //    std::cout << "failed to load height map" << std::endl;
+    //
+    //generate_mesh_with_heightmap("countlessGrass/assets/ground_mesh.txt", res_x, res_y, ground_x, ground_y, ground_z, height_map_data, height_map_width, height_map_height, height_map_channel);
+    //stbi_image_free(height_map_data);
 
     
-    //float* ground_vertex_data = new float[ground_vertex_num * stride];
-    //unsigned int* ground_index = new unsigned int[ground_tri_num * 3];
-
-    //generate_mesh("countlessGrass/assets/ground_mesh.txt", res_x, res_y, ground_width, ground_height);
-
-    /*
     load_mesh("countlessGrass/assets/ground_mesh.txt", ground_vertex_data, ground_index);
 
     unsigned int ground_VAO, ground_VBO, ground_EBO;
@@ -126,59 +97,107 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    */
+    unsigned int ground_texture;
+    glGenTextures(1, &ground_texture);
+    glBindTexture(GL_TEXTURE_2D, ground_texture);
+
+    //set wrap and filter mode
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    int ground_texture_width, ground_texture_height, ground_texture_channel;
+    unsigned char* ground_texture_data = stbi_load("countlessGrass/assets/ground.jpg", &ground_texture_width, &ground_texture_height, &ground_texture_channel, 0);
+    if (ground_texture_data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, ground_texture_width, ground_texture_height, 0, GL_RGB, GL_UNSIGNED_BYTE, ground_texture_data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "failed to load ground texture" << std::endl;
+    }
+
+    stbi_image_free(ground_texture_data);
+    
 #pragma endregion
 
 #pragma region grass
 
     Shader grass_shader("countlessGrass/shaders/grass_vert.vs", "countlessGrass/shaders/grass_frag.fs", "countlessGrass/shaders/grass_geom.gs");
 
-    float points[] = {
-     -0.8f, -0.9f, 0.0f,  // 左上
-     -0.3f, -0.9f, 0.0f,  // 右上
-      0.3f, -0.9f, 0.0f,  // 右下
-      0.8f, -0.9f, 0.0f   // 左下
-    };
-
-    unsigned int grass_VAO, grass_VBO;
-
-    glGenVertexArrays(1, &grass_VAO);
-    glGenBuffers(1, &grass_VBO);
-    
-    glBindVertexArray(grass_VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, grass_VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(points), &points, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-    
-    glBindVertexArray(0);
-
-
-    unsigned int grass_mask_id = loadTexture("countlessGrass/assets/grass_mask.png");
-
     stbi_set_flip_vertically_on_load(true);
-    unsigned int grass_texture_id = loadTexture("countlessGrass/assets/grass_texture.png");
 
-    float grass_width = 0.1f, grass_height = 0.5f;
+    unsigned int grass_mask_texture;
+    glGenTextures(1, &grass_mask_texture);
+    glBindTexture(GL_TEXTURE_2D, grass_mask_texture);
+
+    //set wrap and filter mode
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+
+    int grass_mask_width, grass_mask_height, grass_mask_channel;
+    unsigned char* grass_mask_texture_data = stbi_load("countlessGrass/assets/grassBladeAlpha.png", &grass_mask_width, &grass_mask_height, &grass_mask_channel, 0);
+    if (grass_mask_texture_data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, grass_mask_width, grass_mask_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, grass_mask_texture_data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "failed to load grass mask texture" << std::endl;
+    }
+    
+    stbi_image_free(grass_mask_texture_data);
+
+    unsigned int grass_texture;
+    glGenTextures(1, &grass_texture);
+    glBindTexture(GL_TEXTURE_2D, grass_texture);
+
+    //set wrap and filter mode
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    int grass_texture_width, grass_texture_height, grass_texture_channel;
+    unsigned char* grass_texture_data = stbi_load("countlessGrass/assets/grass_texture.png", &grass_texture_width, &grass_texture_height, &grass_texture_channel, 0);
+    if (grass_texture_data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, grass_texture_width, grass_texture_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, grass_texture_data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "failed to load grass texture" << std::endl;
+    }
+
+    stbi_image_free(grass_texture_data);
+
+    float grass_width = 0.02f, grass_height = 0.2f;
 
     grass_shader.use();
     grass_shader.setFloat("grass_width", grass_width);
     grass_shader.setFloat("grass_height", grass_height);
 
-    grass_shader.setInt("grass_texture", 0);
-    grass_shader.setInt("grass_mask", 1);
+    ground_shader.setInt("ground_texture", 0);
+    grass_shader.setInt("grass_texture", 1);
+    grass_shader.setInt("grass_mask", 2);
 
 #pragma endregion
 
 
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+    glEnable(GL_SAMPLE_ALPHA_TO_COVERAGE);
+    
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    //camera.setInitialStatus(glm::vec3(-5.5, 3.5, -22), glm::vec3(0.15, 0.9, 0.3), 780, -18);
+    camera.setInitialStatus(glm::vec3(-5.5, 3.5, -22), glm::vec3(0.15, 0.9, 0.3), 780, -18);
 
     while (!glfwWindowShouldClose(window))
     { 
@@ -202,46 +221,43 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
         glm::mat4 view = camera.GetViewMatrix();
         ground_shader.setMat4("view", view);
 
-        glBindTexture(GL_TEXTURE_2D, grass_mask_id);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, ground_texture);
 
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        //glDrawElements(GL_TRIANGLES, ground_tri_num * 3, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(ground_VAO);
+        glDrawElements(GL_TRIANGLES, ground_tri_num * 3, GL_UNSIGNED_INT, 0);
 
         //grass
-        //grass_shader.use();
+        grass_shader.use();
         //glm::mat4 model = glm::mat4(1.0);
-        //grass_shader.setMat4("model", model);
+        grass_shader.setMat4("model", model);
 
         //glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        //grass_shader.setMat4("projection", projection);
+        grass_shader.setMat4("projection", projection);
 
         //glm::mat4 view = camera.GetViewMatrix();
-        //grass_shader.setMat4("view", view);
+        grass_shader.setMat4("view", view);
 
-        //glActiveTexture(GL_TEXTURE0);
-        //glBindTexture(GL_TEXTURE_2D, grass_texture_id);
-        //glActiveTexture(GL_TEXTURE1);
-        //glBindTexture(GL_TEXTURE_2D, grass_mask_id);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, grass_texture);
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, grass_mask_texture);
 
-        //glBindVertexArray(grass_VAO);
-        //glDrawArrays(GL_POINTS, 0, 4);
+        glBindBuffer(GL_ARRAY_BUFFER, ground_VBO);
+        glDrawArrays(GL_POINTS, 0, ground_vertex_num);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
 
-    //glDeleteBuffers(1, &ground_VAO);
-    //glDeleteBuffers(1, &ground_VBO);
-    //glDeleteBuffers(1, &ground_EBO);
-
-    glDeleteBuffers(1, &grass_VAO);
-    glDeleteBuffers(1, &grass_VBO);
+    glDeleteBuffers(1, &ground_VAO);
+    glDeleteBuffers(1, &ground_VBO);
+    glDeleteBuffers(1, &ground_EBO);
 
     glfwTerminate();
 
-    //delete[] ground_vertex_data;
-    //delete[] ground_index;
+    delete[] ground_vertex_data;
+    delete[] ground_index;
 }
 

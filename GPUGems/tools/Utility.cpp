@@ -1,7 +1,14 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 #include "Utility.h"
+#include "Maths.h"
+
+double random_num(double min, double max)
+{
+    return rand() / (double)RAND_MAX * (max - min) + min;
+}
 
 std::vector<std::string> split(const std::string& line, char c)
 {
@@ -54,6 +61,68 @@ void generate_mesh(const char* str, int res_x, int res_y, double width, double h
             double u = (double)i / res_x;
             double v = (double)j / res_y;
 
+            out << "t " << u << " " << v << std::endl;
+        }
+    }
+
+    out << std::endl;
+
+    int ind_0, ind_1, ind_2;
+
+    for (int i = 0; i < res_x; i++)
+    {
+        for (int j = 0; j < res_y; j++)
+        {
+            ind_0 = i * (res_y + 1) + j + 1;
+            ind_1 = i * (res_y + 1) + j + 2;
+            ind_2 = (i + 1) * (res_y + 1) + j + 1;
+
+            out << "f " << ind_0 << " " << ind_1 << " " << ind_2 << std::endl;
+
+            ind_0 = i * (res_y + 1) + j + 2;
+            ind_1 = (i + 1) * (res_y + 1) + j + 2;
+            ind_2 = (i + 1) * (res_y + 1) + j + 1;
+
+            out << "f " << ind_0 << " " << ind_1 << " " << ind_2 << std::endl;
+        }
+    }
+
+    out.close();
+}
+
+void generate_mesh_with_heightmap(const char* str, int res_x, int res_y, double ground_x, double ground_y, double ground_z, const unsigned char* height_map, int height_map_width, int height_map_height, int height_map_channel)
+{
+    std::ofstream out(str);
+
+    double length_x = ground_x, length_z = ground_z;
+
+    double delta_x = length_x / res_x;
+    double delta_z = length_z / res_y;
+
+    double x, y, z;
+    double start_x = -length_x / 2.0, start_z = -length_z / 2.0;
+
+    out << "#vertex_num: " << (res_x + 1) * (res_y + 1) << std::endl;
+    out << "#triangle_num: " << res_x * res_y * 2 << std::endl;
+    out << std::endl;
+
+    for (int i = 0; i < res_x + 1; i++)
+    {
+        for (int j = 0; j < res_y + 1; j++)
+        {
+            x = start_x + delta_x * i;
+            z = start_z + delta_z * j;
+
+            double u = (double)i / res_x;
+            double v = (double)j / res_y;
+
+            int map_x = u * height_map_width;
+            int map_y = std::min(v * height_map_height, (double)height_map_height - 1);
+
+            double height_scale = static_cast<double>(height_map[(map_y * height_map_width + map_x) * height_map_channel]) / 255;
+            y = height_scale * ground_y;
+
+            out << "v " << x << " " << y << " " << z << std::endl;
             out << "t " << u << " " << v << std::endl;
         }
     }
