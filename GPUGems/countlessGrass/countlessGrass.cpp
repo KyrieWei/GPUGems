@@ -54,9 +54,9 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
 
     Shader ground_shader("countlessGrass/shaders/ground_vert.vs", "countlessGrass/shaders/ground_frag.fs");
 
-    int res_x = 400, res_y = 400, ground_x = 40, ground_y = 2, ground_z = 40;
-    int ground_vertex_num = (res_x + 1) * (res_y + 1);
-    int ground_tri_num = res_x * res_y * 2;
+    int res_x = 400, res_z = 400, ground_x = 40, ground_y = 2, ground_z = 40;
+    int ground_vertex_num = (res_x + 1) * (res_z + 1);
+    int ground_tri_num = res_x * res_z * 2;
 
     int stride = 5;
     
@@ -68,7 +68,7 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     //if (!height_map_data)
     //    std::cout << "failed to load height map" << std::endl;
     //
-    //generate_mesh_with_heightmap("countlessGrass/assets/ground_mesh.txt", res_x, res_y, ground_x, ground_y, ground_z, height_map_data, height_map_width, height_map_height, height_map_channel);
+    //generate_mesh_with_heightmap("countlessGrass/assets/ground_mesh.txt", res_x, res_z, ground_x, ground_y, ground_z, height_map_data, height_map_width, height_map_height, height_map_channel);
     //stbi_image_free(height_map_data);
 
     
@@ -183,8 +183,11 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     grass_shader.use();
     grass_shader.setFloat("grass_width", grass_width);
     grass_shader.setFloat("grass_height", grass_height);
+    grass_shader.setFloat("mesh_unit_length_x", ground_x / (float)res_x);
+    grass_shader.setFloat("mesh_unit_length_z", ground_z / (float)res_z);
 
     ground_shader.setInt("ground_texture", 0);
+
     grass_shader.setInt("grass_texture", 1);
     grass_shader.setInt("grass_mask", 2);
 
