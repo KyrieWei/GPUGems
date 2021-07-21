@@ -54,7 +54,7 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
 
     Shader ground_shader("countlessGrass/shaders/ground_vert.vs", "countlessGrass/shaders/ground_frag.fs");
 
-    int res_x = 400, res_z = 400, ground_x = 40, ground_y = 2, ground_z = 40;
+    int res_x = 400, res_z = 400, ground_x = 80, ground_y = 2, ground_z = 80;
     int ground_vertex_num = (res_x + 1) * (res_z + 1);
     int ground_tri_num = res_x * res_z * 2;
 
@@ -178,7 +178,7 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
 
     stbi_image_free(grass_texture_data);
 
-    float grass_width = 0.02f, grass_height = 0.2f;
+    float grass_width = 0.06f, grass_height = 0.4f;
 
     grass_shader.use();
     grass_shader.setFloat("grass_width", grass_width);
@@ -186,10 +186,12 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     grass_shader.setFloat("mesh_unit_length_x", ground_x / (float)res_x);
     grass_shader.setFloat("mesh_unit_length_z", ground_z / (float)res_z);
 
-    ground_shader.setInt("ground_texture", 0);
+    grass_shader.setInt("grass_texture", 0);
+    grass_shader.setInt("grass_mask", 1);
+    grass_shader.setVec2("wind_dir", glm::normalize(glm::vec2(1.0, 1.0)));
 
-    grass_shader.setInt("grass_texture", 1);
-    grass_shader.setInt("grass_mask", 2);
+    ground_shader.use();
+    ground_shader.setInt("ground_texture", 0);
 
 #pragma endregion
 
@@ -200,7 +202,7 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    camera.setInitialStatus(glm::vec3(-5.5, 3.5, -22), glm::vec3(0.15, 0.9, 0.3), 780, -18);
+    camera.setInitialStatus(glm::vec3(-5.5, 10.5, -22), glm::vec3(0.15, 0.9, 0.3), 780, -18);
 
     while (!glfwWindowShouldClose(window))
     { 
@@ -241,9 +243,11 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
         //glm::mat4 view = camera.GetViewMatrix();
         grass_shader.setMat4("view", view);
 
-        glActiveTexture(GL_TEXTURE1);
+        grass_shader.setFloat("_Time", currentFrame);
+
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, grass_texture);
-        glActiveTexture(GL_TEXTURE2);
+        glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, grass_mask_texture);
 
         glBindBuffer(GL_ARRAY_BUFFER, ground_VBO);
