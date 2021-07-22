@@ -37,6 +37,12 @@
     <Filter Include="countlessGrass\shaders">
       <UniqueIdentifier>{3f6353b5-f0ba-4c9d-8719-05ff7023b2d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shadowMapping">
+      <UniqueIdentifier>{4fa39be7-04ce-4e43-9788-00c114a4ede0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shadowMapping\shaders">
+      <UniqueIdentifier>{5bcb55ab-83ff-4b54-a82e-6d82aa236ed5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="countlessGrass\countlessGrass.cpp">
       <Filter>countlessGrass</Filter>
+    </ClCompile>
+    <ClCompile Include="shadowMapping\shadowMapping.cpp">
+      <Filter>shadowMapping</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="countlessGrass\countlessGrass.h">
       <Filter>countlessGrass</Filter>
+    </ClInclude>
+    <ClInclude Include="shadowMapping\shadowMapping.h">
+      <Filter>shadowMapping</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +141,12 @@
     </None>
     <None Include="countlessGrass\shaders\grass_geom.gs">
       <Filter>countlessGrass\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\floor_vert.vs">
+      <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\floor_frag.fs">
+      <Filter>shadowMapping\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

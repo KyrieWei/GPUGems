@@ -143,6 +143,7 @@
     <ClCompile Include="countlessGrass\countlessGrass.cpp" />
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shadowMapping\shadowMapping.cpp" />
     <ClCompile Include="tools\glad.c" />
     <ClCompile Include="tools\Maths.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="countlessGrass\countlessGrass.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
+    <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="tools\Camera.h" />
     <ClInclude Include="tools\Maths.h" />
     <ClInclude Include="tools\Shader.h" />
@@ -167,6 +169,8 @@
     <None Include="countlessGrass\shaders\ground_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />
     <None Include="effectiveWater\shaders\vert.vs" />
+    <None Include="shadowMapping\shaders\floor_frag.fs" />
+    <None Include="shadowMapping\shaders\floor_vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
     <None Include="waterCaustic\shaders\water_caustic_frag.fs" />

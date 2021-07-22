@@ -258,7 +258,7 @@ void show_countless_grass(GLFWwindow* window, Camera& camera, unsigned int SCR_W
     }
 
 
-    glDeleteBuffers(1, &ground_VAO);
+    glDeleteVertexArrays(1, &ground_VAO);
     glDeleteBuffers(1, &ground_VBO);
     glDeleteBuffers(1, &ground_EBO);
 
