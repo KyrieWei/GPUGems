@@ -169,8 +169,12 @@
     <None Include="countlessGrass\shaders\ground_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />
     <None Include="effectiveWater\shaders\vert.vs" />
-    <None Include="shadowMapping\shaders\floor_frag.fs" />
-    <None Include="shadowMapping\shaders\floor_vert.vs" />
+    <None Include="shadowMapping\shaders\debug_depth.fs" />
+    <None Include="shadowMapping\shaders\debug_depth.vs" />
+    <None Include="shadowMapping\shaders\depth_frag.fs" />
+    <None Include="shadowMapping\shaders\depth_vert.vs" />
+    <None Include="shadowMapping\shaders\obj_frag.fs" />
+    <None Include="shadowMapping\shaders\obj_vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
     <None Include="waterCaustic\shaders\water_caustic_frag.fs" />

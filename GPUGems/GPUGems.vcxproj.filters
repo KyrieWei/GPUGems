@@ -142,10 +142,22 @@
     <None Include="countlessGrass\shaders\grass_geom.gs">
       <Filter>countlessGrass\shaders</Filter>
     </None>
-    <None Include="shadowMapping\shaders\floor_vert.vs">
+    <None Include="shadowMapping\shaders\obj_vert.vs">
       <Filter>shadowMapping\shaders</Filter>
     </None>
-    <None Include="shadowMapping\shaders\floor_frag.fs">
+    <None Include="shadowMapping\shaders\obj_frag.fs">
+      <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\depth_vert.vs">
+      <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\depth_frag.fs">
+      <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\debug_depth.vs">
+      <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="shadowMapping\shaders\debug_depth.fs">
       <Filter>shadowMapping\shaders</Filter>
     </None>
   </ItemGroup>
