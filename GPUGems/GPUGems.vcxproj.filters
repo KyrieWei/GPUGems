@@ -43,6 +43,12 @@
     <Filter Include="shadowMapping\shaders">
       <UniqueIdentifier>{5bcb55ab-83ff-4b54-a82e-6d82aa236ed5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="omnidirectionalShadow">
+      <UniqueIdentifier>{673e221a-71ee-4eef-bf9e-d086991715bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="omnidirectionalShadow\shaders">
+      <UniqueIdentifier>{79499bd0-ab22-4728-9fc2-b5b8f85889d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="shadowMapping\shadowMapping.cpp">
       <Filter>shadowMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp">
+      <Filter>omnidirectionalShadow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="shadowMapping\shadowMapping.h">
       <Filter>shadowMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h">
+      <Filter>omnidirectionalShadow</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +171,12 @@
     </None>
     <None Include="shadowMapping\shaders\debug_depth.fs">
       <Filter>shadowMapping\shaders</Filter>
+    </None>
+    <None Include="omnidirectionalShadow\shaders\cube_vert.vs">
+      <Filter>omnidirectionalShadow\shaders</Filter>
+    </None>
+    <None Include="omnidirectionalShadow\shaders\cube_frag.fs">
+      <Filter>omnidirectionalShadow\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

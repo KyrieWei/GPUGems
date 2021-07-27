@@ -143,6 +143,7 @@
     <ClCompile Include="countlessGrass\countlessGrass.cpp" />
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
     <ClCompile Include="tools\glad.c" />
     <ClCompile Include="tools\Maths.cpp" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="countlessGrass\countlessGrass.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
+    <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="tools\Camera.h" />
     <ClInclude Include="tools\Maths.h" />
@@ -169,6 +171,8 @@
     <None Include="countlessGrass\shaders\ground_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />
     <None Include="effectiveWater\shaders\vert.vs" />
+    <None Include="omnidirectionalShadow\shaders\cube_frag.fs" />
+    <None Include="omnidirectionalShadow\shaders\cube_vert.vs" />
     <None Include="shadowMapping\shaders\debug_depth.fs" />
     <None Include="shadowMapping\shaders\debug_depth.vs" />
     <None Include="shadowMapping\shaders\depth_frag.fs" />

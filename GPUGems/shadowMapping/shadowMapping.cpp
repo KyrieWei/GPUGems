@@ -154,7 +154,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
     GLuint depthMapFBO;
     glGenFramebuffers(1, &depthMapFBO);
 
-    const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+    const GLuint SHADOW_WIDTH = 2048, SHADOW_HEIGHT = 2048;
 
     GLuint depthMap;
     glGenTextures(1, &depthMap);
@@ -222,7 +222,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
     glm::vec3 lightPos = glm::vec3(-2.0f, 5.0f, -1.0f);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
 
     camera.setInitialStatus(glm::vec3(4.0f, 4.0f, 7.0f), glm::vec3(-0.3f, 0.8f, -0.5f), -120, -32); 
 
@@ -241,7 +241,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
 
-        glCullFace(GL_FRONT);
+        //glCullFace(GL_FRONT);
 
         GLfloat near_plane = 1.0f, far_plane = 7.5f;
         glm::mat4 lightProjection = glm::ortho(-10.0f, 10.f, -10.f, 10.0f, near_plane, far_plane);
@@ -261,7 +261,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
         glBindVertexArray(box_VAO);
 
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.49f, 0.0f));
         model = glm::scale(model, glm::vec3(0.5f));
         depth_shader.setMat4("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -281,7 +281,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-        glCullFace(GL_BACK);
+        //glCullFace(GL_BACK);
 
         //------------------debug depth map----------------------
         //reset viewport
@@ -337,7 +337,7 @@ void show_shadow_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WI
         glBindVertexArray(box_VAO);
 
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.49f, 0.0f));
         model = glm::scale(model, glm::vec3(0.5f));
         obj_shader.setMat4("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);

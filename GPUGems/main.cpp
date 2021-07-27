@@ -10,6 +10,7 @@
 #include "waterCaustic/waterCaustic.h"
 #include "countlessGrass/countlessGrass.h"
 #include "shadowMapping/shadowMapping.h"
+#include "omnidirectionalShadow/omnidirectionalShadow.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -66,8 +67,11 @@ int main()
 
     // 0 : effective water
     // 1 : water caustic
+    // 2 : countless grass
+    // 3 : shadow mapping
+    // 4 : omnidirectional shadow
 
-    int demo = 3;
+    int demo = 4;
 
     switch (demo)
     {
@@ -85,6 +89,9 @@ int main()
     case 3:
         glfwSetWindowTitle(window, "shadow_mapping");
         show_shadow_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 4:
+        glfwSetWindowTitle(window, "omnidirectional_shadow");
+        show_omnidirectional_shadow(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }
