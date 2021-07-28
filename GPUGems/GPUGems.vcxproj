@@ -145,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
+    <ClCompile Include="toneMapping\toneMapping.cpp" />
     <ClCompile Include="tools\glad.c" />
     <ClCompile Include="tools\Maths.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="effectiveWater\effectiveWater.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
+    <ClInclude Include="toneMapping\toneMapping.h" />
     <ClInclude Include="tools\Camera.h" />
     <ClInclude Include="tools\Maths.h" />
     <ClInclude Include="tools\Shader.h" />
@@ -173,12 +175,19 @@
     <None Include="effectiveWater\shaders\vert.vs" />
     <None Include="omnidirectionalShadow\shaders\cube_frag.fs" />
     <None Include="omnidirectionalShadow\shaders\cube_vert.vs" />
+    <None Include="omnidirectionalShadow\shaders\depth_frag.fs" />
+    <None Include="omnidirectionalShadow\shaders\depth_geom.gs" />
+    <None Include="omnidirectionalShadow\shaders\depth_vert.vs" />
     <None Include="shadowMapping\shaders\debug_depth.fs" />
     <None Include="shadowMapping\shaders\debug_depth.vs" />
     <None Include="shadowMapping\shaders\depth_frag.fs" />
     <None Include="shadowMapping\shaders\depth_vert.vs" />
     <None Include="shadowMapping\shaders\obj_frag.fs" />
     <None Include="shadowMapping\shaders\obj_vert.vs" />
+    <None Include="toneMapping\shaders\hdr_frag.fs" />
+    <None Include="toneMapping\shaders\hdr_vert.vs" />
+    <None Include="toneMapping\shaders\scene_frag.fs" />
+    <None Include="toneMapping\shaders\scene_vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
     <None Include="waterCaustic\shaders\water_caustic_frag.fs" />

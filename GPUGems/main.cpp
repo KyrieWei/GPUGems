@@ -11,6 +11,7 @@
 #include "countlessGrass/countlessGrass.h"
 #include "shadowMapping/shadowMapping.h"
 #include "omnidirectionalShadow/omnidirectionalShadow.h"
+#include "toneMapping/toneMapping.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -70,8 +71,9 @@ int main()
     // 2 : countless grass
     // 3 : shadow mapping
     // 4 : omnidirectional shadow
+    // 5 : tone mapping
 
-    int demo = 4;
+    int demo = 5;
 
     switch (demo)
     {
@@ -87,11 +89,14 @@ int main()
         glfwSetWindowTitle(window, "countless grass");
         show_countless_grass(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     case 3:
-        glfwSetWindowTitle(window, "shadow_mapping");
+        glfwSetWindowTitle(window, "shadow mapping");
         show_shadow_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     case 4:
-        glfwSetWindowTitle(window, "omnidirectional_shadow");
+        glfwSetWindowTitle(window, "omnidirectional shadow");
         show_omnidirectional_shadow(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 5:
+        glfwSetWindowTitle(window, "tone mapping");
+        show_tone_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

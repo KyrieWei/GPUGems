@@ -49,6 +49,12 @@
     <Filter Include="omnidirectionalShadow\shaders">
       <UniqueIdentifier>{79499bd0-ab22-4728-9fc2-b5b8f85889d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="toneMapping">
+      <UniqueIdentifier>{374af94e-670c-447d-894c-a561302034bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="toneMapping\shaders">
+      <UniqueIdentifier>{122ea90e-5d18-4a7e-b296-6eba443953ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp">
       <Filter>omnidirectionalShadow</Filter>
+    </ClCompile>
+    <ClCompile Include="toneMapping\toneMapping.cpp">
+      <Filter>toneMapping</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h">
       <Filter>omnidirectionalShadow</Filter>
+    </ClInclude>
+    <ClInclude Include="toneMapping\toneMapping.h">
+      <Filter>toneMapping</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +189,27 @@
     </None>
     <None Include="omnidirectionalShadow\shaders\cube_frag.fs">
       <Filter>omnidirectionalShadow\shaders</Filter>
+    </None>
+    <None Include="omnidirectionalShadow\shaders\depth_vert.vs">
+      <Filter>omnidirectionalShadow\shaders</Filter>
+    </None>
+    <None Include="omnidirectionalShadow\shaders\depth_frag.fs">
+      <Filter>omnidirectionalShadow\shaders</Filter>
+    </None>
+    <None Include="omnidirectionalShadow\shaders\depth_geom.gs">
+      <Filter>omnidirectionalShadow\shaders</Filter>
+    </None>
+    <None Include="toneMapping\shaders\hdr_frag.fs">
+      <Filter>toneMapping\shaders</Filter>
+    </None>
+    <None Include="toneMapping\shaders\hdr_vert.vs">
+      <Filter>toneMapping\shaders</Filter>
+    </None>
+    <None Include="toneMapping\shaders\scene_frag.fs">
+      <Filter>toneMapping\shaders</Filter>
+    </None>
+    <None Include="toneMapping\shaders\scene_vert.vs">
+      <Filter>toneMapping\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
