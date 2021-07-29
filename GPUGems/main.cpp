@@ -12,6 +12,7 @@
 #include "shadowMapping/shadowMapping.h"
 #include "omnidirectionalShadow/omnidirectionalShadow.h"
 #include "toneMapping/toneMapping.h"
+#include "imageBasedLighting/imageBasedLighting.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -72,8 +73,10 @@ int main()
     // 3 : shadow mapping
     // 4 : omnidirectional shadow
     // 5 : tone mapping
+    // 6 : image based lighting
 
-    int demo = 5;
+
+    int demo = 6;
 
     switch (demo)
     {
@@ -97,6 +100,9 @@ int main()
     case 5:
         glfwSetWindowTitle(window, "tone mapping");
         show_tone_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 6:
+        glfwSetWindowTitle(window, "image based lighting");
+        show_image_based_lighting(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

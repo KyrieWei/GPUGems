@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="countlessGrass\countlessGrass.cpp" />
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
+    <ClCompile Include="imageBasedLighting\imageBasedLighting.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="countlessGrass\countlessGrass.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
+    <ClInclude Include="imageBasedLighting\imageBasedLighting.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="toneMapping\toneMapping.h" />

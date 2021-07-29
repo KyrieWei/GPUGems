@@ -55,6 +55,9 @@
     <Filter Include="toneMapping\shaders">
       <UniqueIdentifier>{122ea90e-5d18-4a7e-b296-6eba443953ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="imageBasedLighting">
+      <UniqueIdentifier>{e3eba15a-6e02-4381-b94c-bf242649f88b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="toneMapping\toneMapping.cpp">
       <Filter>toneMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="imageBasedLighting\imageBasedLighting.cpp">
+      <Filter>imageBasedLighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="toneMapping\toneMapping.h">
       <Filter>toneMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="imageBasedLighting\imageBasedLighting.h">
+      <Filter>imageBasedLighting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
