@@ -8,6 +8,8 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+uniform bool inverse_normal;
+
 out VS_OUT
 {
 	vec3 FragPos;
@@ -17,7 +19,10 @@ out VS_OUT
 
 void main()
 {
-	vs_out.Normal = transpose(inverse(mat3(model))) * aNormal;
+	vec3 n = inverse_normal ? -aNormal : aNormal;
+	mat3 normalMatrix = transpose(inverse(mat3(model)));
+	vs_out.Normal  = normalize(normalMatrix * n);
+
 	vs_out.TexCoord = aTexCoord;
 	vs_out.FragPos = vec3(model * vec4(aPos, 1.0));
 

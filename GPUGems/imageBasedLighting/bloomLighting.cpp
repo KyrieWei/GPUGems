@@ -1,6 +1,6 @@
-#include "imageBasedLighting.h"
+#include "bloomLighting.h"
 
-void show_image_based_lighting(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT, processInputCallback processInput)
+void show_bloom_lighting(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT, processInputCallback processInput)
 {
     // timing
     float deltaTime = 0.0f;	// time between current frame and last frame

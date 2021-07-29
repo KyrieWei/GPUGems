@@ -14,9 +14,9 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
 
     std::vector<glm::vec3> lightPositions;
     lightPositions.push_back(glm::vec3(0.0f, 0.0f, 49.5f)); // back light
-    lightPositions.push_back(glm::vec3(-1.4f, -1.9f, 9.0f));
-    lightPositions.push_back(glm::vec3(0.0f, -1.8f, 4.0f));
-    lightPositions.push_back(glm::vec3(0.8f, -1.7f, 6.0f));
+    lightPositions.push_back(glm::vec3(-1.4f, -1.9f, 29.0f));
+    lightPositions.push_back(glm::vec3(0.0f, -1.8f, 24.0f));
+    lightPositions.push_back(glm::vec3(0.8f, -1.7f, 26.0f));
 
     std::vector<glm::vec3> lightColors;
     lightColors.push_back(glm::vec3(200.0f, 200.0f, 200.0f));
@@ -28,7 +28,7 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
     Shader hdr_shader("toneMapping/shaders/hdr_vert.vs", "toneMapping/shaders/hdr_frag.fs");
 
     GLboolean hdr = true;
-    GLfloat exposure = 1.0f;
+    GLfloat exposure = 0.1f;
 
     scene_shader.use();
     scene_shader.setInt("wood", 0);
@@ -137,6 +137,9 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
 
 #pragma region floating_point_framebuffer
 
+    GLuint hdrFBO;
+    glGenFramebuffers(1, &hdrFBO);
+
     GLuint colorBuffer;
     glGenTextures(1, &colorBuffer);
 
@@ -145,13 +148,17 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    GLuint hdrFBO;
+    GLuint rboDepth;
+    glGenRenderbuffers(1, &rboDepth);
+    glBindRenderbuffer(GL_RENDERBUFFER, rboDepth);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, SCR_WIDTH, SCR_HEIGHT);
 
-    glGenFramebuffers(1, &hdrFBO);
-
-    //LEARN FRAME BUFFER !!!!!!
     glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, colorBuffer, 0);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rboDepth);
+
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        std::cout << "Framebuffer not complete!" << std::endl;
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -184,7 +191,7 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
 
     glEnable(GL_DEPTH_TEST);
 
-    camera.setInitialStatus(glm::vec3(0.0, 0.0, 15.0), glm::vec3(0, 1, 0), 262, 0);
+    camera.setInitialStatus(glm::vec3(0.0, 0.0, 15.0), glm::vec3(0, 1, 0), 90, 0);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -193,10 +200,9 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
         lastFrame = currentFrame;
         processInput(window, deltaTime);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
         glm::mat4 model(1.0);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(camera.Zoom, (GLfloat)SCR_WIDTH / (GLfloat)SCR_HEIGHT, 0.1f, 100.0f);
@@ -221,7 +227,7 @@ void show_tone_mapping(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDT
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 25.0f));
         model = glm::scale(model, glm::vec3(5.0f, 5.0f, 55.0f));
         scene_shader.setMat4("model", model);
-        scene_shader.setInt("inverse_normals", -1);
+        scene_shader.setBool("inverse_normal", GL_TRUE);
         
         glBindVertexArray(cube_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);

@@ -55,7 +55,7 @@
     <Filter Include="toneMapping\shaders">
       <UniqueIdentifier>{122ea90e-5d18-4a7e-b296-6eba443953ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="imageBasedLighting">
+    <Filter Include="bloomLighting">
       <UniqueIdentifier>{e3eba15a-6e02-4381-b94c-bf242649f88b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -90,8 +90,8 @@
     <ClCompile Include="toneMapping\toneMapping.cpp">
       <Filter>toneMapping</Filter>
     </ClCompile>
-    <ClCompile Include="imageBasedLighting\imageBasedLighting.cpp">
-      <Filter>imageBasedLighting</Filter>
+    <ClCompile Include="imageBasedLighting\bloomLighting.cpp">
+      <Filter>bloomLighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,8 +131,8 @@
     <ClInclude Include="toneMapping\toneMapping.h">
       <Filter>toneMapping</Filter>
     </ClInclude>
-    <ClInclude Include="imageBasedLighting\imageBasedLighting.h">
-      <Filter>imageBasedLighting</Filter>
+    <ClInclude Include="imageBasedLighting\bloomLighting.h">
+      <Filter>bloomLighting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

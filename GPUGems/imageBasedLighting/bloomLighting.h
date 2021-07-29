@@ -7,4 +7,4 @@
 
 typedef void (*processInputCallback)(GLFWwindow* window, float deltaTime);
 
-void show_image_based_lighting(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT, processInputCallback processInput);
+void show_bloom_lighting(GLFWwindow* window, Camera& camera, unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT, processInputCallback processInput);

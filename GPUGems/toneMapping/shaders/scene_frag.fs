@@ -22,39 +22,29 @@ uniform SpotLight lights[light_num];
 uniform vec3 viewPos;
 uniform int inverse_normals;
 
-vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos)
-{
-	vec3 lightDir = normalize(light.Position - fragPos);
-	vec3 viewDir = normalize(viewPos - fragPos);
-
-	//diffuse
-	float diff = max(dot(normal, lightDir), 0.0);
-
-	//specular
-	vec3 halfwayDir = normalize(lightDir + viewDir);
-	float spec = pow(max(dot(normal, halfwayDir), 0.0), 64.0);
-	
-	//attenuation
-	float distance = length(light.Position - fragPos);
-	float attenuation = 1.0 / (1.0  + 0.09 * distance + 0.032 * distance * distance);
-
-	vec3 ambient = 0.3 * light.Color;
-	vec3 diffuse = diff * light.Color;
-	vec3 specular = spec * light.Color;
-
-	return ambient + diffuse + specular;
-}
-
 void main()
 {
-	vec3 normal = normalize(fs_in.Normal) * inverse_normals;
+	vec3 normal = normalize(fs_in.Normal);
 
 	vec3 wood_color = texture(wood, fs_in.TexCoord).rgb;
 
-	vec3 light = vec3(0);
+	vec3 ambient = 0.0 * wood_color;
+
+	vec3 light = vec3(0.0);
 
 	for(int i = 0; i < light_num; i ++)
-		light += CalcSpotLight(lights[i], normal, fs_in.FragPos);
+	{
+		vec3 lightDir = normalize(lights[i].Position - fs_in.FragPos);
+		float diff = max(dot(lightDir, normal), 0.0);
+		vec3 diffuse = lights[i].Color * diff * wood_color;
 
-	FragColor = vec4(light * wood_color, 1.0);
+		vec3 result = diffuse;
+
+		float distance = length(fs_in.FragPos - lights[i].Position);
+		result *= 1.0 / (distance * distance);
+
+		light += result;
+	}
+
+	FragColor = vec4(ambient + light, 1.0);
 }
