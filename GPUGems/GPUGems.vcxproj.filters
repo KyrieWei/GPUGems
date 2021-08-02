@@ -58,6 +58,9 @@
     <Filter Include="bloomLighting">
       <UniqueIdentifier>{e3eba15a-6e02-4381-b94c-bf242649f88b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="bloomLighting\shaders">
+      <UniqueIdentifier>{0b984e42-1f6b-4da2-bb2c-787a7d88e76d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -90,7 +93,7 @@
     <ClCompile Include="toneMapping\toneMapping.cpp">
       <Filter>toneMapping</Filter>
     </ClCompile>
-    <ClCompile Include="imageBasedLighting\bloomLighting.cpp">
+    <ClCompile Include="bloomLighting\bloomLighting.cpp">
       <Filter>bloomLighting</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,7 +134,7 @@
     <ClInclude Include="toneMapping\toneMapping.h">
       <Filter>toneMapping</Filter>
     </ClInclude>
-    <ClInclude Include="imageBasedLighting\bloomLighting.h">
+    <ClInclude Include="bloomLighting\bloomLighting.h">
       <Filter>bloomLighting</Filter>
     </ClInclude>
   </ItemGroup>
@@ -219,6 +222,30 @@
     </None>
     <None Include="toneMapping\shaders\scene_vert.vs">
       <Filter>toneMapping\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_vert.vs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_frag.fs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_final_vert.vs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_final_frag.fs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\light_box_vert.vs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\light_box_frag.fs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_blur_vert.vs">
+      <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="bloomLighting\shaders\bloom_blur_frag.fs">
+      <Filter>bloomLighting\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

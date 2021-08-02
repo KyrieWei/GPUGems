@@ -140,9 +140,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bloomLighting\bloomLighting.cpp" />
     <ClCompile Include="countlessGrass\countlessGrass.cpp" />
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
-    <ClCompile Include="imageBasedLighting\bloomLighting.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
@@ -153,9 +153,9 @@
     <ClCompile Include="waterCaustic\waterCaustic.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bloomLighting\bloomLighting.h" />
     <ClInclude Include="countlessGrass\countlessGrass.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
-    <ClInclude Include="imageBasedLighting\bloomLighting.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="toneMapping\toneMapping.h" />
@@ -168,6 +168,14 @@
     <ClInclude Include="waterCaustic\waterCaustic.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bloomLighting\shaders\bloom_blur_frag.fs" />
+    <None Include="bloomLighting\shaders\bloom_blur_vert.vs" />
+    <None Include="bloomLighting\shaders\bloom_final_frag.fs" />
+    <None Include="bloomLighting\shaders\bloom_final_vert.vs" />
+    <None Include="bloomLighting\shaders\bloom_frag.fs" />
+    <None Include="bloomLighting\shaders\bloom_vert.vs" />
+    <None Include="bloomLighting\shaders\light_box_frag.fs" />
+    <None Include="bloomLighting\shaders\light_box_vert.vs" />
     <None Include="countlessGrass\shaders\grass_frag.fs" />
     <None Include="countlessGrass\shaders\grass_geom.gs" />
     <None Include="countlessGrass\shaders\grass_vert.vs" />

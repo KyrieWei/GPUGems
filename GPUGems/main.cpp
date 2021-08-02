@@ -12,7 +12,7 @@
 #include "shadowMapping/shadowMapping.h"
 #include "omnidirectionalShadow/omnidirectionalShadow.h"
 #include "toneMapping/toneMapping.h"
-#include "imageBasedLighting/bloomLighting.h"
+#include "bloomLighting/bloomLighting.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -101,7 +101,7 @@ int main()
         glfwSetWindowTitle(window, "tone mapping");
         show_tone_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     case 6:
-        glfwSetWindowTitle(window, "image based lighting");
+        glfwSetWindowTitle(window, "bloom lighting");
         show_bloom_lighting(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
