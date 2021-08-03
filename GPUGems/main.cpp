@@ -13,6 +13,7 @@
 #include "omnidirectionalShadow/omnidirectionalShadow.h"
 #include "toneMapping/toneMapping.h"
 #include "bloomLighting/bloomLighting.h"
+#include "deferredShading/deferredShading.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -74,9 +75,9 @@ int main()
     // 4 : omnidirectional shadow
     // 5 : tone mapping
     // 6 : bloom lighting
+    // 7 : deferred shading
 
-
-    int demo = 6;
+    int demo = 7;
 
     switch (demo)
     {
@@ -103,6 +104,9 @@ int main()
     case 6:
         glfwSetWindowTitle(window, "bloom lighting");
         show_bloom_lighting(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 7:
+        glfwSetWindowTitle(window, "deferred shading");
+        show_deferred_shading(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

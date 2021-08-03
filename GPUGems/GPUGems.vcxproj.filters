@@ -61,6 +61,12 @@
     <Filter Include="bloomLighting\shaders">
       <UniqueIdentifier>{0b984e42-1f6b-4da2-bb2c-787a7d88e76d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="deferredShading">
+      <UniqueIdentifier>{e2ba95b5-7c80-4ea4-a515-def9870173a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deferredShading\shaders">
+      <UniqueIdentifier>{a9ccbaed-d7a7-4437-aabf-068d480804a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="bloomLighting\bloomLighting.cpp">
       <Filter>bloomLighting</Filter>
+    </ClCompile>
+    <ClCompile Include="deferredShading\deferredShading.cpp">
+      <Filter>deferredShading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="bloomLighting\bloomLighting.h">
       <Filter>bloomLighting</Filter>
+    </ClInclude>
+    <ClInclude Include="deferredShading\deferredShading.h">
+      <Filter>deferredShading</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +258,12 @@
     </None>
     <None Include="bloomLighting\shaders\bloom_blur_frag.fs">
       <Filter>bloomLighting\shaders</Filter>
+    </None>
+    <None Include="deferredShading\shaders\sphere_vert.vs">
+      <Filter>deferredShading\shaders</Filter>
+    </None>
+    <None Include="deferredShading\shaders\sphere_frag.fs">
+      <Filter>deferredShading\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

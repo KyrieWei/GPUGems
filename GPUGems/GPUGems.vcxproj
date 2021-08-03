@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="bloomLighting\bloomLighting.cpp" />
     <ClCompile Include="countlessGrass\countlessGrass.cpp" />
+    <ClCompile Include="deferredShading\deferredShading.cpp" />
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="bloomLighting\bloomLighting.h" />
     <ClInclude Include="countlessGrass\countlessGrass.h" />
+    <ClInclude Include="deferredShading\deferredShading.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
@@ -181,6 +183,8 @@
     <None Include="countlessGrass\shaders\grass_vert.vs" />
     <None Include="countlessGrass\shaders\ground_frag.fs" />
     <None Include="countlessGrass\shaders\ground_vert.vs" />
+    <None Include="deferredShading\shaders\sphere_frag.fs" />
+    <None Include="deferredShading\shaders\sphere_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />
     <None Include="effectiveWater\shaders\vert.vs" />
     <None Include="omnidirectionalShadow\shaders\cube_frag.fs" />
