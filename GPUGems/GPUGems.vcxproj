@@ -183,6 +183,10 @@
     <None Include="countlessGrass\shaders\grass_vert.vs" />
     <None Include="countlessGrass\shaders\ground_frag.fs" />
     <None Include="countlessGrass\shaders\ground_vert.vs" />
+    <None Include="deferredShading\shaders\debug_frag.fs" />
+    <None Include="deferredShading\shaders\debug_vert.vs" />
+    <None Include="deferredShading\shaders\gbuffer_frag.fs" />
+    <None Include="deferredShading\shaders\gbuffer_vert.vs" />
     <None Include="deferredShading\shaders\sphere_frag.fs" />
     <None Include="deferredShading\shaders\sphere_vert.vs" />
     <None Include="effectiveWater\shaders\frag.fs" />

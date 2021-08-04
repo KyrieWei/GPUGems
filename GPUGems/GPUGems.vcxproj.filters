@@ -265,6 +265,18 @@
     <None Include="deferredShading\shaders\sphere_frag.fs">
       <Filter>deferredShading\shaders</Filter>
     </None>
+    <None Include="deferredShading\shaders\gbuffer_vert.vs">
+      <Filter>deferredShading\shaders</Filter>
+    </None>
+    <None Include="deferredShading\shaders\gbuffer_frag.fs">
+      <Filter>deferredShading\shaders</Filter>
+    </None>
+    <None Include="deferredShading\shaders\debug_vert.vs">
+      <Filter>deferredShading\shaders</Filter>
+    </None>
+    <None Include="deferredShading\shaders\debug_frag.fs">
+      <Filter>deferredShading\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt">
