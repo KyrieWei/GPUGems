@@ -67,6 +67,12 @@
     <Filter Include="deferredShading\shaders">
       <UniqueIdentifier>{a9ccbaed-d7a7-4437-aabf-068d480804a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ssaoTechnique">
+      <UniqueIdentifier>{1b6d3b8c-db7b-4980-a444-30bea1284621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ssaoTechnique\shaders">
+      <UniqueIdentifier>{80a165d2-6d43-41d9-80be-1be00927392f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +110,15 @@
     </ClCompile>
     <ClCompile Include="deferredShading\deferredShading.cpp">
       <Filter>deferredShading</Filter>
+    </ClCompile>
+    <ClCompile Include="ssaoTechnique\ssaoTechnique.cpp">
+      <Filter>ssaoTechnique</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Mesh.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Model.cpp">
+      <Filter>tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +163,15 @@
     </ClInclude>
     <ClInclude Include="deferredShading\deferredShading.h">
       <Filter>deferredShading</Filter>
+    </ClInclude>
+    <ClInclude Include="ssaoTechnique\ssaoTechnique.h">
+      <Filter>ssaoTechnique</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Mesh.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Model.h">
+      <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +300,36 @@
     </None>
     <None Include="deferredShading\shaders\debug_frag.fs">
       <Filter>deferredShading\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_vert.vs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_frag.fs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_geometry_vert.vs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_geometry_frag.fs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\debug_frag.fs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\debug_vert.vs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_compute_vert.vs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_compute_frag.fs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_blur_vert.vs">
+      <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="ssaoTechnique\shaders\ssao_blur_frag.fs">
+      <Filter>ssaoTechnique\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

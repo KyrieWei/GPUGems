@@ -14,6 +14,7 @@
 #include "toneMapping/toneMapping.h"
 #include "bloomLighting/bloomLighting.h"
 #include "deferredShading/deferredShading.h"
+#include "ssaoTechnique/ssaoTechnique.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -76,8 +77,9 @@ int main()
     // 5 : tone mapping
     // 6 : bloom lighting
     // 7 : deferred shading
+    // 8 : ssao technique
 
-    int demo = 7;
+    int demo = 8;
 
     switch (demo)
     {
@@ -107,6 +109,9 @@ int main()
     case 7:
         glfwSetWindowTitle(window, "deferred shading");
         show_deferred_shading(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 8:
+        glfwSetWindowTitle(window, "ssao technique");
+        show_ssao_technique(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

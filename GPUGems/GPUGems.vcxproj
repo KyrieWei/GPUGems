@@ -147,9 +147,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
+    <ClCompile Include="ssaoTechnique\ssaoTechnique.cpp" />
     <ClCompile Include="toneMapping\toneMapping.cpp" />
     <ClCompile Include="tools\glad.c" />
     <ClCompile Include="tools\Maths.cpp" />
+    <ClCompile Include="tools\Mesh.cpp" />
+    <ClCompile Include="tools\Model.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
     <ClCompile Include="waterCaustic\waterCaustic.cpp" />
   </ItemGroup>
@@ -160,9 +163,12 @@
     <ClInclude Include="effectiveWater\effectiveWater.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
+    <ClInclude Include="ssaoTechnique\ssaoTechnique.h" />
     <ClInclude Include="toneMapping\toneMapping.h" />
     <ClInclude Include="tools\Camera.h" />
     <ClInclude Include="tools\Maths.h" />
+    <ClInclude Include="tools\Mesh.h" />
+    <ClInclude Include="tools\Model.h" />
     <ClInclude Include="tools\Shader.h" />
     <ClInclude Include="tools\stb_image.h" />
     <ClInclude Include="tools\stb_image_write.h" />
@@ -202,6 +208,16 @@
     <None Include="shadowMapping\shaders\depth_vert.vs" />
     <None Include="shadowMapping\shaders\obj_frag.fs" />
     <None Include="shadowMapping\shaders\obj_vert.vs" />
+    <None Include="ssaoTechnique\shaders\debug_frag.fs" />
+    <None Include="ssaoTechnique\shaders\debug_vert.vs" />
+    <None Include="ssaoTechnique\shaders\ssao_blur_frag.fs" />
+    <None Include="ssaoTechnique\shaders\ssao_blur_vert.vs" />
+    <None Include="ssaoTechnique\shaders\ssao_compute_frag.fs" />
+    <None Include="ssaoTechnique\shaders\ssao_compute_vert.vs" />
+    <None Include="ssaoTechnique\shaders\ssao_frag.fs" />
+    <None Include="ssaoTechnique\shaders\ssao_geometry_frag.fs" />
+    <None Include="ssaoTechnique\shaders\ssao_geometry_vert.vs" />
+    <None Include="ssaoTechnique\shaders\ssao_vert.vs" />
     <None Include="toneMapping\shaders\hdr_frag.fs" />
     <None Include="toneMapping\shaders\hdr_vert.vs" />
     <None Include="toneMapping\shaders\scene_frag.fs" />
