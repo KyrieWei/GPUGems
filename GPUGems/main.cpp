@@ -79,7 +79,7 @@ int main()
     // 7 : deferred shading
     // 8 : ssao technique
 
-    int demo = 8;
+    int demo = 7;
 
     switch (demo)
     {
@@ -94,24 +94,31 @@ int main()
     case 2:
         glfwSetWindowTitle(window, "countless grass");
         show_countless_grass(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 3:
         glfwSetWindowTitle(window, "shadow mapping");
         show_shadow_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 4:
         glfwSetWindowTitle(window, "omnidirectional shadow");
         show_omnidirectional_shadow(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 5:
         glfwSetWindowTitle(window, "tone mapping");
         show_tone_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 6:
         glfwSetWindowTitle(window, "bloom lighting");
         show_bloom_lighting(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 7:
         glfwSetWindowTitle(window, "deferred shading");
         show_deferred_shading(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     case 8:
         glfwSetWindowTitle(window, "ssao technique");
         show_ssao_technique(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     default:
         break;
     }
