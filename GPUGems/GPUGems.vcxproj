@@ -148,6 +148,7 @@
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
     <ClCompile Include="ssaoTechnique\ssaoTechnique.cpp" />
+    <ClCompile Include="testForAlgorithm\TestForAlgorithm.cpp" />
     <ClCompile Include="toneMapping\toneMapping.cpp" />
     <ClCompile Include="tools\glad.c" />
     <ClCompile Include="tools\Maths.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="ssaoTechnique\ssaoTechnique.h" />
+    <ClInclude Include="testForAlgorithm\TestForAlgorithm.h" />
     <ClInclude Include="toneMapping\toneMapping.h" />
     <ClInclude Include="tools\Camera.h" />
     <ClInclude Include="tools\Maths.h" />
@@ -218,6 +220,8 @@
     <None Include="ssaoTechnique\shaders\ssao_geometry_frag.fs" />
     <None Include="ssaoTechnique\shaders\ssao_geometry_vert.vs" />
     <None Include="ssaoTechnique\shaders\ssao_vert.vs" />
+    <None Include="testForAlgorithm\shaders\frag.fs" />
+    <None Include="testForAlgorithm\shaders\vert.vs" />
     <None Include="toneMapping\shaders\hdr_frag.fs" />
     <None Include="toneMapping\shaders\hdr_vert.vs" />
     <None Include="toneMapping\shaders\scene_frag.fs" />

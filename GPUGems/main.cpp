@@ -15,6 +15,7 @@
 #include "bloomLighting/bloomLighting.h"
 #include "deferredShading/deferredShading.h"
 #include "ssaoTechnique/ssaoTechnique.h"
+#include "testForAlgorithm/TestForAlgorithm.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -78,8 +79,9 @@ int main()
     // 6 : bloom lighting
     // 7 : deferred shading
     // 8 : ssao technique
+    // 9 : test for algorithm
 
-    int demo = 7;
+    int demo = 9;
 
     switch (demo)
     {
@@ -119,6 +121,9 @@ int main()
         glfwSetWindowTitle(window, "ssao technique");
         show_ssao_technique(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
         break;
+    case 9:
+        glfwSetWindowTitle(window, "test for algorithm");
+        show_test_for_algorithm(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
     default:
         break;
     }

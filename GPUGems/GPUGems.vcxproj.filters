@@ -73,6 +73,12 @@
     <Filter Include="ssaoTechnique\shaders">
       <UniqueIdentifier>{80a165d2-6d43-41d9-80be-1be00927392f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="testForAlgorithm">
+      <UniqueIdentifier>{ab64bf23-659c-47c0-bdcf-c97f470d61af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="testForAlgorithm\shaders">
+      <UniqueIdentifier>{9a482a95-5c79-4b0d-9c18-b6ee35faa3dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -119,6 +125,9 @@
     </ClCompile>
     <ClCompile Include="tools\Model.cpp">
       <Filter>tools</Filter>
+    </ClCompile>
+    <ClCompile Include="testForAlgorithm\TestForAlgorithm.cpp">
+      <Filter>testForAlgorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="tools\Model.h">
       <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="testForAlgorithm\TestForAlgorithm.h">
+      <Filter>testForAlgorithm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +342,12 @@
     </None>
     <None Include="ssaoTechnique\shaders\ssao_blur_frag.fs">
       <Filter>ssaoTechnique\shaders</Filter>
+    </None>
+    <None Include="testForAlgorithm\shaders\frag.fs">
+      <Filter>testForAlgorithm\shaders</Filter>
+    </None>
+    <None Include="testForAlgorithm\shaders\vert.vs">
+      <Filter>testForAlgorithm\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
