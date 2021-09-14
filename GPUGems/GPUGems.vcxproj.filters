@@ -79,6 +79,15 @@
     <Filter Include="testForAlgorithm\shaders">
       <UniqueIdentifier>{9a482a95-5c79-4b0d-9c18-b6ee35faa3dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="voxelConeTracing">
+      <UniqueIdentifier>{a3190d4d-c4cb-4cf6-a4d7-92ac9a24089a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="voxelConeTracing\Scenes">
+      <UniqueIdentifier>{c73987fc-4bd5-4913-a74d-d0d362c32234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="voxelConeTracing\Graphics">
+      <UniqueIdentifier>{742b823e-e429-491c-a78a-6a2883917b1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -128,6 +137,21 @@
     </ClCompile>
     <ClCompile Include="testForAlgorithm\TestForAlgorithm.cpp">
       <Filter>testForAlgorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\voxelConeTracing.cpp">
+      <Filter>voxelConeTracing</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Graphics\Graphics.cpp">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Scenes\Scene.cpp">
+      <Filter>voxelConeTracing\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Graphics\PointLight.cpp">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Scenes\CornellScene.cpp">
+      <Filter>voxelConeTracing\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +208,21 @@
     </ClInclude>
     <ClInclude Include="testForAlgorithm\TestForAlgorithm.h">
       <Filter>testForAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\voxelConeTracing.h">
+      <Filter>voxelConeTracing</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Graphics\Graphics.h">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Scenes\Scene.h">
+      <Filter>voxelConeTracing\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Graphics\PointLight.h">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Scenes\CornellScene.h">
+      <Filter>voxelConeTracing\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

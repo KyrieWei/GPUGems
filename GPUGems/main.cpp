@@ -80,8 +80,8 @@ int main()
     // 7 : deferred shading
     // 8 : ssao technique
     // 9 : test for algorithm
-
-    int demo = 9;
+    // 10 : voxel cone tracing
+    int demo = 10;
 
     switch (demo)
     {
@@ -124,6 +124,9 @@ int main()
     case 9:
         glfwSetWindowTitle(window, "test for algorithm");
         show_test_for_algorithm(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+    case 10:
+        glfwSetWindowTitle(window, "voxel cone tracing");
+
     default:
         break;
     }

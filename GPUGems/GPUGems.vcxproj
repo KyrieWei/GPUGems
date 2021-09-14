@@ -155,6 +155,11 @@
     <ClCompile Include="tools\Mesh.cpp" />
     <ClCompile Include="tools\Model.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
+    <ClCompile Include="voxelConeTracing\Graphics\Graphics.cpp" />
+    <ClCompile Include="voxelConeTracing\Graphics\PointLight.cpp" />
+    <ClCompile Include="voxelConeTracing\Scenes\CornellScene.cpp" />
+    <ClCompile Include="voxelConeTracing\Scenes\Scene.cpp" />
+    <ClCompile Include="voxelConeTracing\voxelConeTracing.cpp" />
     <ClCompile Include="waterCaustic\waterCaustic.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +180,11 @@
     <ClInclude Include="tools\stb_image.h" />
     <ClInclude Include="tools\stb_image_write.h" />
     <ClInclude Include="tools\Utility.h" />
+    <ClInclude Include="voxelConeTracing\Graphics\Graphics.h" />
+    <ClInclude Include="voxelConeTracing\Graphics\PointLight.h" />
+    <ClInclude Include="voxelConeTracing\Scenes\CornellScene.h" />
+    <ClInclude Include="voxelConeTracing\Scenes\Scene.h" />
+    <ClInclude Include="voxelConeTracing\voxelConeTracing.h" />
     <ClInclude Include="waterCaustic\waterCaustic.h" />
   </ItemGroup>
   <ItemGroup>
