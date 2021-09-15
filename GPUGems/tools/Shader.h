@@ -13,6 +13,9 @@ class Shader
 {
 public:
     unsigned int ID;
+
+    Shader() {}
+
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
     Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr)
@@ -96,6 +99,16 @@ public:
             glDeleteShader(geometry);
 
     }
+
+    Shader& operator=(const Shader& right)
+    {
+        if (this == &right)
+            return *this;
+
+        this->ID = right.ID;
+        return *this;
+    }
+
     // activate the shader
     // ------------------------------------------------------------------------
     void use()

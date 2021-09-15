@@ -16,6 +16,7 @@
 #include "deferredShading/deferredShading.h"
 #include "ssaoTechnique/ssaoTechnique.h"
 #include "testForAlgorithm/TestForAlgorithm.h"
+#include "voxelConeTracing/voxelConeTracing.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -124,9 +125,16 @@ int main()
     case 9:
         glfwSetWindowTitle(window, "test for algorithm");
         show_test_for_algorithm(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
-    case 10:
-        glfwSetWindowTitle(window, "voxel cone tracing");
-
+        break;
+    case 10:   
+        {
+            glfwSetWindowTitle(window, "voxel cone tracing");
+            voxelConeTracing app;
+            app.init(SCR_WIDTH, SCR_HEIGHT);
+            app.run(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+            break;
+        }
+        
     default:
         break;
     }

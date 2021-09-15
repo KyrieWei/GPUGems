@@ -88,6 +88,9 @@
     <Filter Include="voxelConeTracing\Graphics">
       <UniqueIdentifier>{742b823e-e429-491c-a78a-6a2883917b1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="voxelConeTracing\Shaders">
+      <UniqueIdentifier>{be412a36-6fb6-46ba-b61e-ae2d0665b1b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -387,6 +390,12 @@
     </None>
     <None Include="testForAlgorithm\shaders\vert.vs">
       <Filter>testForAlgorithm\shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\render_vert.vs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\render_frag.fs">
+      <Filter>voxelConeTracing\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

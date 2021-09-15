@@ -236,6 +236,8 @@
     <None Include="toneMapping\shaders\hdr_vert.vs" />
     <None Include="toneMapping\shaders\scene_frag.fs" />
     <None Include="toneMapping\shaders\scene_vert.vs" />
+    <None Include="voxelConeTracing\Shaders\render_frag.fs" />
+    <None Include="voxelConeTracing\Shaders\render_vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
     <None Include="waterCaustic\shaders\water_caustic_frag.fs" />

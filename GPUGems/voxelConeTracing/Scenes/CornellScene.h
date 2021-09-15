@@ -1,15 +1,12 @@
 #pragma once
 #include <vector>
+#include "Scene.h"
 
-class Shape;
-
-class CornellScene
+class CornellScene : public Scene
 {
 public:
 	void update();
 	void init(unsigned int viewportWidth, unsigned int viewportHeight);
 	~CornellScene();
-private:
-	std::vector<Shape*> shapes;
 };
 

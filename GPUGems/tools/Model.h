@@ -61,7 +61,7 @@ private:
 		}
 
 		for (unsigned int i = 0; i < node->mNumChildren; i++)
-		{
+		{ 
 			processNode(node->mChildren[i], scene);
 		}
 	}

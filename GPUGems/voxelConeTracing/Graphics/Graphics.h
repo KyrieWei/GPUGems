@@ -1,4 +1,8 @@
 #pragma once
+#include <memory>
+#include "../Scenes/Scene.h"
+#include "../../tools/Shader.h"
+
 class Graphics
 {
 public:
@@ -8,11 +12,13 @@ public:
 		VOXEL_CONE_TRACING = 1
 	};
 
+	Graphics() {}
+
 	//initialize rendering
-	virtual void init(unsigned int viewportWidth, unsigned int viewportHeight);
+	virtual void init();
 
 	//rendering a scene
-	virtual void render(unsigned int viewportWidth, unsigned int viewportHeight, RenderingMode renderMode = RenderingMode::VOXEL_CONE_TRACING);
+	virtual void render(std::shared_ptr<Scene>& renderingScene, Camera& camera, RenderingMode renderMode = RenderingMode::VOXEL_CONE_TRACING);
 
 	//rendering
 	bool shadows = true;
@@ -22,6 +28,14 @@ public:
 
 	//voxelization
 	bool automaticallyRegenerateMipmap = true;
+
+private:
+
+	Shader shader;
+
+	void renderScene(std::shared_ptr<Scene>& renderingScene, Camera& camera);
+	void renderQueue(std::vector<Model>& models);
+	void setCameraInfo(Camera& camera, Shader& shader);
 
 };
 
