@@ -18,7 +18,8 @@ void Graphics::renderScene(std::shared_ptr<Scene>& renderingScene, Camera& camer
 
 
 	setCameraInfo(camera, shader);
-	
+	setLightInfo(renderingScene, shader);
+
 	renderQueue(renderingScene->models);
 }
 
@@ -36,4 +37,11 @@ void Graphics::setCameraInfo(Camera& camera, Shader& shader)
 	shader.setMat4("model", glm::mat4(1.0));
 	shader.setMat4("view", camera.GetViewMatrix());
 	shader.setMat4("projection", camera.GetProjectMatrix());
+	shader.setVec3("cameraPosition", camera.Position);
+}
+
+void Graphics::setLightInfo(std::shared_ptr<Scene>& renderingScene, Shader& shader)
+{
+	for (unsigned int i = 0; i < renderingScene->pointLights.size(); i++)
+		renderingScene->pointLights[i].Upload(shader, i);
 }

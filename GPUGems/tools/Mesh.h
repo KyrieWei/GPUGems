@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Shader.h"
+#include "MaterialSetting.h"
 
 struct Vertex
 {
@@ -26,7 +27,12 @@ public:
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
+
 	unsigned int VAO;
+
+	bool useMaterialSetting = false;
+	MaterialSetting materialSetting;
+	
 
 	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
 	{
@@ -35,6 +41,11 @@ public:
 		this->textures = textures;
 
 		setupMesh();
+	}
+
+	~Mesh()
+	{
+
 	}
 
 	void Draw(Shader& shader)
@@ -63,6 +74,14 @@ public:
 
 			glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
+		}
+
+		//Voxel Cone Tracing 
+		if (useMaterialSetting)
+		{
+			shader.use();
+			shader.setVec3("material.diffuseColor", materialSetting.diffuseColor);
+			shader.setVec3("material.specularColor", materialSetting.specularColor);
 		}
 
 		glBindVertexArray(VAO);

@@ -9,7 +9,7 @@ void voxelConeTracing::init(unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT)
 
     CornellScene cornellScene;
     cornellScene.init(SCR_WIDTH, SCR_HEIGHT);
-
+    
     scene = std::make_shared<CornellScene>(cornellScene);
 }
 

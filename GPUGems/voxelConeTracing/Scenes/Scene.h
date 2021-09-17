@@ -2,6 +2,7 @@
 #include "../../tools/Camera.h"
 #include "../Graphics/PointLight.h"
 #include "../../tools/Model.h"
+#include "../Graphics/PointLight.h"
 
 class MeshRenderer;
 
@@ -17,5 +18,6 @@ public:
 
 public:
 	std::vector<Model> models;
+	std::vector<PointLight> pointLights;
 };
 

@@ -21,6 +21,9 @@ public:
 	std::string directory;
 	bool gammaCorrections;
 
+    //Voxel Cone Tracing
+    bool useMaterialSetting = false;
+
 	Model(std::string const& path, bool gamma = false) : gammaCorrections(gamma)
 	{
         loadModel(path);
@@ -30,6 +33,7 @@ public:
 	{
 		for (unsigned int i = 0; i < meshes.size(); i++)
 		{
+            meshes[i].useMaterialSetting = useMaterialSetting;
 			meshes[i].Draw(shader);
 		}
 	}

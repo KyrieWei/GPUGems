@@ -227,6 +227,9 @@
     <ClInclude Include="voxelConeTracing\Scenes\CornellScene.h">
       <Filter>voxelConeTracing\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="tools\MaterialSetting.h">
+      <Filter>tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="effectiveWater\shaders\frag.fs">

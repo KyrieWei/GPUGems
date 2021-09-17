@@ -173,6 +173,7 @@
     <ClInclude Include="testForAlgorithm\TestForAlgorithm.h" />
     <ClInclude Include="toneMapping\toneMapping.h" />
     <ClInclude Include="tools\Camera.h" />
+    <ClInclude Include="tools\MaterialSetting.h" />
     <ClInclude Include="tools\Maths.h" />
     <ClInclude Include="tools\Mesh.h" />
     <ClInclude Include="tools\Model.h" />

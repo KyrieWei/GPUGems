@@ -29,13 +29,17 @@ public:
 	//voxelization
 	bool automaticallyRegenerateMipmap = true;
 
+	//shader
+	Shader shader;
+
 private:
 
-	Shader shader;
+	
 
 	void renderScene(std::shared_ptr<Scene>& renderingScene, Camera& camera);
 	void renderQueue(std::vector<Model>& models);
 	void setCameraInfo(Camera& camera, Shader& shader);
+	void setLightInfo(std::shared_ptr<Scene>& renderingScene, Shader& shader);
 
 };
 

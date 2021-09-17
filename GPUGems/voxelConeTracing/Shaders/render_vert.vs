@@ -7,10 +7,10 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-out vec3 Normal;
+out vec3 normalFrag;
 
 void main()
 {
-	Normal = aNormal;
+	normalFrag = aNormal;
 	gl_Position = projection * view * model * vec4(aPos, 1.0);
 }
