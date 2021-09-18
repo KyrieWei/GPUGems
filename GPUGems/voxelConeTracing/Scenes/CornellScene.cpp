@@ -6,6 +6,7 @@ void CornellScene::init(unsigned int viewportWidth, unsigned int viewportHeight)
 	camera.setPerspectiveProject((float)viewportWidth / (float)viewportHeight, 0.1f, 100.0f);
 
 	Model cornellBox("voxelConeTracing/assets/models/cornell.obj");
+	Model lightSphere("voxelConeTracing/assets/models/sphere.obj");
 
 	//Cornel box
 	cornellBox.meshes[0].materialSetting = MaterialSetting(glm::vec3(0.35f, 0.38f, 1.0f));   //Green wall
@@ -18,16 +19,31 @@ void CornellScene::init(unsigned int viewportWidth, unsigned int viewportHeight)
 
 	cornellBox.useMaterialSetting = true;
 
+	//light sphere
+	lightSphere.meshes[0].materialSetting = MaterialSetting(glm::vec3(1.0f, 1.0f, 1.0f), 8.0f, 0.0f, 0.0f);
+	lightSphere.useMaterialSetting = true;
+
 	models.push_back(cornellBox);
+	models.push_back(lightSphere);
 
 	PointLight p;
 	p.color = normalize(glm::vec3(1.4f, 0.9f, 0.35f));
 	pointLights.push_back(p);
+	
 }
 
 void CornellScene::update()
 {
-	pointLights[0].position = glm::vec3(1.0f, 1.0f, 1.0f);
+	//light sphere
+	models[1].transform.position = glm::vec3(0, 0.5, 0.1);
+	models[1].transform.position.x *= 4.5f;
+	models[1].transform.position.z *= 4.5f;
+
+	models[1].transform.scale = glm::vec3(0.05f);
+	models[1].transform.updateTransformMatrix();
+
+	pointLights[0].position = models[1].transform.position;
+
 }
 
 CornellScene::~CornellScene()

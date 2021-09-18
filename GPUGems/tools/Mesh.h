@@ -82,6 +82,7 @@ public:
 			shader.use();
 			shader.setVec3("material.diffuseColor", materialSetting.diffuseColor);
 			shader.setVec3("material.specularColor", materialSetting.specularColor);
+			shader.setFloat("material.emissivity", materialSetting.emissivity);
 		}
 
 		glBindVertexArray(VAO);

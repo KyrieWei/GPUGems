@@ -91,6 +91,9 @@
     <Filter Include="voxelConeTracing\Shaders">
       <UniqueIdentifier>{be412a36-6fb6-46ba-b61e-ae2d0665b1b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="parallaxMapping">
+      <UniqueIdentifier>{ca45b902-779d-4620-b949-b6e3024f2974}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -155,6 +158,18 @@
     </ClCompile>
     <ClCompile Include="voxelConeTracing\Scenes\CornellScene.cpp">
       <Filter>voxelConeTracing\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="parallaxMapping\parallaxMapping.cpp">
+      <Filter>parallaxMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Graphics\Texture3D.cpp">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="voxelConeTracing\Graphics\Texture2D.cpp">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\Transform.cpp">
+      <Filter>tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +243,18 @@
       <Filter>voxelConeTracing\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="tools\MaterialSetting.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="parallaxMapping\parallaxMapping.h">
+      <Filter>parallaxMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Graphics\Texture3D.h">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Graphics\Texture2D.h">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\Transform.h">
       <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>

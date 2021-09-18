@@ -146,6 +146,7 @@
     <ClCompile Include="effectiveWater\effectiveWater.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="omnidirectionalShadow\omnidirectionalShadow.cpp" />
+    <ClCompile Include="parallaxMapping\parallaxMapping.cpp" />
     <ClCompile Include="shadowMapping\shadowMapping.cpp" />
     <ClCompile Include="ssaoTechnique\ssaoTechnique.cpp" />
     <ClCompile Include="testForAlgorithm\TestForAlgorithm.cpp" />
@@ -154,9 +155,12 @@
     <ClCompile Include="tools\Maths.cpp" />
     <ClCompile Include="tools\Mesh.cpp" />
     <ClCompile Include="tools\Model.cpp" />
+    <ClCompile Include="tools\Transform.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
     <ClCompile Include="voxelConeTracing\Graphics\Graphics.cpp" />
     <ClCompile Include="voxelConeTracing\Graphics\PointLight.cpp" />
+    <ClCompile Include="voxelConeTracing\Graphics\Texture2D.cpp" />
+    <ClCompile Include="voxelConeTracing\Graphics\Texture3D.cpp" />
     <ClCompile Include="voxelConeTracing\Scenes\CornellScene.cpp" />
     <ClCompile Include="voxelConeTracing\Scenes\Scene.cpp" />
     <ClCompile Include="voxelConeTracing\voxelConeTracing.cpp" />
@@ -168,6 +172,7 @@
     <ClInclude Include="deferredShading\deferredShading.h" />
     <ClInclude Include="effectiveWater\effectiveWater.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
+    <ClInclude Include="parallaxMapping\parallaxMapping.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="ssaoTechnique\ssaoTechnique.h" />
     <ClInclude Include="testForAlgorithm\TestForAlgorithm.h" />
@@ -180,9 +185,12 @@
     <ClInclude Include="tools\Shader.h" />
     <ClInclude Include="tools\stb_image.h" />
     <ClInclude Include="tools\stb_image_write.h" />
+    <ClInclude Include="tools\Transform.h" />
     <ClInclude Include="tools\Utility.h" />
     <ClInclude Include="voxelConeTracing\Graphics\Graphics.h" />
     <ClInclude Include="voxelConeTracing\Graphics\PointLight.h" />
+    <ClInclude Include="voxelConeTracing\Graphics\Texture2D.h" />
+    <ClInclude Include="voxelConeTracing\Graphics\Texture3D.h" />
     <ClInclude Include="voxelConeTracing\Scenes\CornellScene.h" />
     <ClInclude Include="voxelConeTracing\Scenes\Scene.h" />
     <ClInclude Include="voxelConeTracing\voxelConeTracing.h" />

@@ -17,6 +17,7 @@
 #include "ssaoTechnique/ssaoTechnique.h"
 #include "testForAlgorithm/TestForAlgorithm.h"
 #include "voxelConeTracing/voxelConeTracing.h"
+#include "parallaxMapping/parallaxMapping.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -40,8 +41,8 @@ float lastFrame = 0.0f;
 int main()
 {
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
 #ifdef __APPLE__
@@ -82,6 +83,8 @@ int main()
     // 8 : ssao technique
     // 9 : test for algorithm
     // 10 : voxel cone tracing
+    // 11 : parallax mapping
+
     int demo = 10;
 
     switch (demo)
@@ -134,7 +137,10 @@ int main()
             app.run(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
             break;
         }
-        
+    case 11:
+        glfwSetWindowTitle(window, "parallax mapping");
+        show_parallax_mapping(window, camera, SCR_WIDTH, SCR_HEIGHT, processInput);
+        break;
     default:
         break;
     }

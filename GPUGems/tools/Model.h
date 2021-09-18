@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Mesh.h"
+#include "Transform.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -21,6 +22,8 @@ public:
 	std::string directory;
 	bool gammaCorrections;
 
+    Transform transform;
+
     //Voxel Cone Tracing
     bool useMaterialSetting = false;
 
@@ -31,6 +34,9 @@ public:
 
 	void Draw(Shader& shader)
 	{
+        shader.use();
+        shader.setMat4("model", transform.getTransformMatrix());
+
 		for (unsigned int i = 0; i < meshes.size(); i++)
 		{
             meshes[i].useMaterialSetting = useMaterialSetting;

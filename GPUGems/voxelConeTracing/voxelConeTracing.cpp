@@ -28,6 +28,7 @@ void voxelConeTracing::run(GLFWwindow* window, Camera& camera, unsigned int SCR_
         lastFrame = currentFrame;
         processInput(window, deltaTime);
 
+        scene->update();
         graphics.render(scene, camera);
 
         glfwSwapBuffers(window);

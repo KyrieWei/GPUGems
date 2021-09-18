@@ -1,15 +1,17 @@
-#version 330 core
+#version 450 core
 
+
+//light settings
 #define DIRECT_LIGHT_INTENSITY 0.96f
+#define MAX_LIGHTS 1
 
+//lighting attenuation factors
 #define DIST_FACTOR 1.1f
 #define CONSTANT 1
 #define LINEAR 0
 #define QUADRATIC 1
 
 #define GAMMA_CORRECTION 1
-
-
 
 struct PointLight
 {
@@ -21,6 +23,7 @@ struct Material
 {
     vec3 diffuseColor;
     vec3 specularColor;
+    float emissivity;
 };
 
 struct Settings
@@ -33,7 +36,9 @@ struct Settings
 
 uniform Material material;
 uniform Settings settings;
+uniform PointLight pointLights[MAX_LIGHTS];
 uniform vec3 cameraPosition;
+uniform int numberOfLights;
 
 in vec3 worldPositionFrag;
 in vec3 normalFrag;
@@ -49,27 +54,29 @@ float attenuate(float dist)
 vec3 calculateDirectLight(const PointLight light, const vec3 viewDirection)
 {
     vec3 lightDirection = light.position - worldPositionFrag;
-    const float distanceToLight = length(lightDirection);
+    float distanceToLight = length(lightDirection);
     lightDirection = normalize(lightDirection);
-    const float lightAngle = dot(normalFrag, lightDirection);
+    float lightAngle = dot(normalFrag, lightDirection);
     
     //diffuse lighting
     float diffuseAngle = max(lightAngle, 0.0f);
 
-    const float diffuse = diffuseAngle;
+    float diffuse = diffuseAngle;
 
-    const vec3 diff = material.diffuseColor * diffuse;
+    vec3 diff = material.diffuseColor * diffuse;
 
-    const vec3 total = diff;
+    vec3 total = diff;
 
-    return attenuate(distanceToLight) * total;
+    vec3 dirLight = total * attenuate(distanceToLight);
+
+    return dirLight;
 }
 
 vec3 directLight(vec3 viewDirection)
 {
     vec3 direct = vec3(0.0f);
-    const uint maxLights = min(numberOfLights, MAX_LIGHTS);
-    for(uint i = 0; i < maxLights; i ++)
+    int maxLights = min(numberOfLights, MAX_LIGHTS);
+    for(int i = 0; i < maxLights; i ++)
         direct += calculateDirectLight(pointLights[i], viewDirection);
 
    direct *= DIRECT_LIGHT_INTENSITY;
@@ -78,12 +85,15 @@ vec3 directLight(vec3 viewDirection)
 
 void main()
 {
-    color = vec4(0, 0, 0, 1);
-    const vec3 viewDirection = normalize(worldPosFrag - cameraPosition);
+    vec4 color = vec4(0, 0, 0, 1);
+    const vec3 viewDirection = normalize(worldPositionFrag - cameraPosition);
+
+    //Emissivity
+    color.rgb += material.emissivity * material.diffuseColor;
     
     //Direct light
     if(settings.directLight)
         color.rgb += directLight(viewDirection);
 
-    fragColor = vec4(material.diffuseColor, 1.0);
+    fragColor = color;
 }
