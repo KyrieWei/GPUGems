@@ -157,6 +157,7 @@
     <ClCompile Include="tools\Model.cpp" />
     <ClCompile Include="tools\Transform.cpp" />
     <ClCompile Include="tools\Utility.cpp" />
+    <ClCompile Include="voxelConeTracing\Graphics\FBO.cpp" />
     <ClCompile Include="voxelConeTracing\Graphics\Graphics.cpp" />
     <ClCompile Include="voxelConeTracing\Graphics\PointLight.cpp" />
     <ClCompile Include="voxelConeTracing\Graphics\Texture2D.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="effectiveWater\effectiveWater.h" />
     <ClInclude Include="omnidirectionalShadow\omnidirectionalShadow.h" />
     <ClInclude Include="parallaxMapping\parallaxMapping.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="shadowMapping\shadowMapping.h" />
     <ClInclude Include="ssaoTechnique\ssaoTechnique.h" />
     <ClInclude Include="testForAlgorithm\TestForAlgorithm.h" />
@@ -183,10 +185,12 @@
     <ClInclude Include="tools\Mesh.h" />
     <ClInclude Include="tools\Model.h" />
     <ClInclude Include="tools\Shader.h" />
+    <ClInclude Include="tools\standardModel.h" />
     <ClInclude Include="tools\stb_image.h" />
     <ClInclude Include="tools\stb_image_write.h" />
     <ClInclude Include="tools\Transform.h" />
     <ClInclude Include="tools\Utility.h" />
+    <ClInclude Include="voxelConeTracing\Graphics\FBO.h" />
     <ClInclude Include="voxelConeTracing\Graphics\Graphics.h" />
     <ClInclude Include="voxelConeTracing\Graphics\PointLight.h" />
     <ClInclude Include="voxelConeTracing\Graphics\Texture2D.h" />
@@ -247,6 +251,13 @@
     <None Include="toneMapping\shaders\scene_vert.vs" />
     <None Include="voxelConeTracing\Shaders\render_frag.fs" />
     <None Include="voxelConeTracing\Shaders\render_vert.vs" />
+    <None Include="voxelConeTracing\Shaders\voxel_frag.fs" />
+    <None Include="voxelConeTracing\Shaders\voxel_geom.gs" />
+    <None Include="voxelConeTracing\Shaders\voxel_vert.vs" />
+    <None Include="voxelConeTracing\Shaders\voxel_visualization_frag.fs" />
+    <None Include="voxelConeTracing\Shaders\voxel_visualization_vert.vs" />
+    <None Include="voxelConeTracing\Shaders\worldposition_frag.fs" />
+    <None Include="voxelConeTracing\Shaders\worldposition_vert.vs" />
     <None Include="waterCaustic\shaders\ground_frag.fs" />
     <None Include="waterCaustic\shaders\ground_vert.vs" />
     <None Include="waterCaustic\shaders\water_caustic_frag.fs" />
@@ -256,6 +267,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GPUGems.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

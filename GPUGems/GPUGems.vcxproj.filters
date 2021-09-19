@@ -171,6 +171,9 @@
     <ClCompile Include="tools\Transform.cpp">
       <Filter>tools</Filter>
     </ClCompile>
+    <ClCompile Include="voxelConeTracing\Graphics\FBO.cpp">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tools\Camera.h">
@@ -255,6 +258,15 @@
       <Filter>voxelConeTracing\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="tools\Transform.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="voxelConeTracing\Graphics\FBO.h">
+      <Filter>voxelConeTracing\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\standardModel.h">
       <Filter>tools</Filter>
     </ClInclude>
   </ItemGroup>
@@ -427,10 +439,36 @@
     <None Include="voxelConeTracing\Shaders\render_frag.fs">
       <Filter>voxelConeTracing\Shaders</Filter>
     </None>
+    <None Include="voxelConeTracing\Shaders\voxel_vert.vs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxel_geom.gs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxel_frag.fs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\worldposition_vert.vs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\worldposition_frag.fs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxel_visualization_vert.vs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxel_visualization_frag.fs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt">
       <Filter>effectiveWater\assets</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GPUGems.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

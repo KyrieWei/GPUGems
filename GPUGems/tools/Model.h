@@ -27,6 +27,11 @@ public:
     //Voxel Cone Tracing
     bool useMaterialSetting = false;
 
+    Model()
+    {
+
+    }
+
 	Model(std::string const& path, bool gamma = false) : gammaCorrections(gamma)
 	{
         loadModel(path);
