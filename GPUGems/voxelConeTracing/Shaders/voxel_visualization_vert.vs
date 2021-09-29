@@ -2,8 +2,6 @@
 
 layout (location = 0) in vec3 aPos;
 
-uniform mat4 view;
-
 out vec2 textureCoord;
 
 vec2 scaleAndBias(vec2 p)

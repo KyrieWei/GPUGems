@@ -251,6 +251,9 @@
     <None Include="toneMapping\shaders\scene_vert.vs" />
     <None Include="voxelConeTracing\Shaders\render_frag.fs" />
     <None Include="voxelConeTracing\Shaders\render_vert.vs" />
+    <None Include="voxelConeTracing\Shaders\voxelize_frag.fs" />
+    <None Include="voxelConeTracing\Shaders\voxelize_geom.gs" />
+    <None Include="voxelConeTracing\Shaders\voxelize_vert.vs" />
     <None Include="voxelConeTracing\Shaders\voxel_frag.fs" />
     <None Include="voxelConeTracing\Shaders\voxel_geom.gs" />
     <None Include="voxelConeTracing\Shaders\voxel_vert.vs" />

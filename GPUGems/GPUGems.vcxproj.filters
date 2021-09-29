@@ -460,6 +460,15 @@
     <None Include="voxelConeTracing\Shaders\voxel_visualization_frag.fs">
       <Filter>voxelConeTracing\Shaders</Filter>
     </None>
+    <None Include="voxelConeTracing\Shaders\voxelize_vert.vs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxelize_frag.fs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
+    <None Include="voxelConeTracing\Shaders\voxelize_geom.gs">
+      <Filter>voxelConeTracing\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="effectiveWater\assets\water_mesh.txt">

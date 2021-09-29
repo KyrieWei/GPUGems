@@ -6,11 +6,11 @@ layout(triangle_strip, max_vertices = 3) out;
 in vec3 worldPositionGeom[];
 in vec3 normalGeom[];
  
- out vec3 worldPositionFrag;
- out vec3 normalFrag;
+out vec3 worldPositionFrag;
+out vec3 normalFrag;
 
- void main()
- {
+void main()
+{
 	vec3 p1 = worldPositionGeom[1] - worldPositionGeom[0];
 	vec3 p2 = worldPositionGeom[2] - worldPositionGeom[0];
 
@@ -20,6 +20,7 @@ in vec3 normalGeom[];
 	{
 		worldPositionFrag = worldPositionGeom[i];
 		normalFrag = normalGeom[i];
+		
 		if(p.z > p.x && p.z > p.y)
 		{
 			gl_Position = vec4(worldPositionFrag.x, worldPositionFrag.y, 0, 1);
@@ -32,7 +33,8 @@ in vec3 normalGeom[];
 		{
 			gl_Position = vec4(worldPositionFrag.x, worldPositionFrag.z, 0, 1);
 		}
+		
 		EmitVertex();
 	}
 	EndPrimitive();
- }
+}

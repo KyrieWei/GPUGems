@@ -23,6 +23,7 @@ public:
 	bool gammaCorrections;
 
     Transform transform;
+    glm::vec3 m_min, m_max;
 
     //Voxel Cone Tracing
     bool useMaterialSetting = false;
@@ -48,6 +49,12 @@ public:
 			meshes[i].Draw(shader);
 		}
 	}
+
+    void getAABB(glm::vec3& min, glm::vec3& max)
+    {
+        min = m_min;
+        max = m_max;
+    }
 
 private:
 	void loadModel(std::string const& path)
@@ -130,6 +137,21 @@ private:
                 vertex.TexCoords = glm::vec2(0.0f, 0.0f);
 
             vertices.push_back(vertex);
+
+            //bounding box
+            if (mesh->mVertices[i].x < m_min.x)
+                m_min.x = mesh->mVertices[i].x;
+            if (mesh->mVertices[i].y < m_min.y)
+                m_min.y = mesh->mVertices[i].y;
+            if (mesh->mVertices[i].z < m_min.z)
+                m_min.z = mesh->mVertices[i].z;
+            if (mesh->mVertices[i].x > m_max.x)
+                m_max.x = mesh->mVertices[i].x;
+            if (mesh->mVertices[i].y > m_max.y)
+                m_max.y = mesh->mVertices[i].y;
+            if (mesh->mVertices[i].z > m_max.z)
+                m_max.z = mesh->mVertices[i].z;
+
         }
         // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
         for (unsigned int i = 0; i < mesh->mNumFaces; i++)

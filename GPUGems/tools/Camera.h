@@ -78,10 +78,9 @@ public:
         projectionMatrix = glm::perspective(Zoom, aspect, near, far);
     }
 
-    // returns the view matrix calculated using Euler Angles and the LookAt Matrix
-    glm::mat4 GetViewMatrix() const
+    void setOrthographicProject(float left, float right, float bottom, float top, float near, float far)
     {
-        return glm::lookAt(Position, Position + Front, Up);
+        projectionMatrix = glm::ortho(left, right, bottom, top, near, far);
     }
 
     // return the projection matrix
@@ -89,6 +88,18 @@ public:
     {
         return projectionMatrix;
     }
+
+    // returns the view matrix calculated using Euler Angles and the LookAt Matrix
+    glm::mat4 GetViewMatrix() const
+    {
+        return glm::lookAt(Position, Position + Front, Up);
+    }
+
+    glm::mat4 GetViewMatrix(glm::vec3 front, glm::vec3 up) const
+    {
+        return glm::lookAt(Position, Position + front, up);
+    }
+    
 
     //set camera movement speed
     void setMovementSpeed(float speed)

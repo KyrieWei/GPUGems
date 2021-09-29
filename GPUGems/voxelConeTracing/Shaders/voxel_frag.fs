@@ -14,13 +14,15 @@ struct PointLight
     vec3 color;
 };
 
-in vec3 worldPositionFrag;
-in vec3 normalFrag;
-
 out vec4 fragColor;
 
 uniform PointLight pointLights[MAX_LIGHTS];
 uniform int numberOfLights;
+
+layout(RGBA8) uniform image3D texture3D;
+
+in vec3 worldPositionFrag;
+in vec3 normalFrag;
 
 float attenuate(float dist)
 {
@@ -43,15 +45,23 @@ bool isInsideCube(vec3 p, float e)
     return abs(p.x) < 1 + e && abs(p.y) < 1 + e && abs(p.z) < 1 + e;
 }
 
+vec3 scaleAndBias(vec3 p) 
+{
+    return 0.5f * p + vec3(0.5f);
+}
+
 void main()
 {
     vec3 color = vec3(0.0f);
     if(!isInsideCube(worldPositionFrag, 0))
         return;
 
-     int maxLights = min(numberOfLights, MAX_LIGHTS);
-     for(int i = 0; i < maxLights; i ++)
-        color += calculatePointLight(pointLights[i]);
+    int maxLights = min(numberOfLights, MAX_LIGHTS);
+    for(int i = 0; i < maxLights; i ++)
+       color += calculatePointLight(pointLights[i]);
 
-    fragColor = vec4(color, 1.0);
+    vec3 voxel = scaleAndBias(worldPositionFrag);
+    ivec3 dim = imageSize(texture3D);
+    vec4 res = vec4(0.2, 0.3, 0.5, 1.0);
+    imageStore(texture3D, ivec3(dim * voxel), res);
 }

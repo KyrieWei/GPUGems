@@ -44,5 +44,6 @@ void main()
         fragColor += (1.0f - fragColor.a) * currentSample;
      }
 
-     fragColor.rgb = pow(fragColor.rgb, vec3(1.0 / 2.2));
+     //fragColor.rgb = pow(fragColor.rgb, vec3(1.0 / 2.2));
+     fragColor = vec4(0.3, 0.5, 0.7, 1.0);
 }

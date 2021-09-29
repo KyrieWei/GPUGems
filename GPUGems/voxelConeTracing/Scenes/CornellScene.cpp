@@ -7,6 +7,7 @@ void CornellScene::init(unsigned int viewportWidth, unsigned int viewportHeight)
 
 	Model cornellBox("voxelConeTracing/assets/models/cornell.obj");
 	Model lightSphere("voxelConeTracing/assets/models/sphere.obj");
+	//Model dragon("voxelConeTracing/assets/models/dragon.obj");
 
 	//Cornel box
 	cornellBox.meshes[0].materialSetting = MaterialSetting(glm::vec3(0.35f, 0.38f, 1.0f));   //Green wall
@@ -24,8 +25,9 @@ void CornellScene::init(unsigned int viewportWidth, unsigned int viewportHeight)
 	lightSphere.useMaterialSetting = true;
 
 	models.push_back(cornellBox);
+	//models.push_back(dragon);
 	models.push_back(lightSphere);
-
+	
 	PointLight p;
 	p.color = normalize(glm::vec3(1.4f, 0.9f, 0.35f));
 	pointLights.push_back(p);
@@ -35,12 +37,13 @@ void CornellScene::init(unsigned int viewportWidth, unsigned int viewportHeight)
 void CornellScene::update()
 {
 	//light sphere
-	models[1].transform.position = glm::vec3(0, 0.5, 0.1);
-	models[1].transform.position.x *= 4.5f;
-	models[1].transform.position.z *= 4.5f;
+	int index = models.size() - 1;
+	models[index].transform.position = glm::vec3(0, 0.5, 0.1);
+	models[index].transform.position.x *= 4.5f;
+	models[index].transform.position.z *= 4.5f;
 
-	models[1].transform.scale = glm::vec3(0.05f);
-	models[1].transform.updateTransformMatrix();
+	models[index].transform.scale = glm::vec3(0.05f);
+	models[index].transform.updateTransformMatrix();
 
 	pointLights[0].position = models[1].transform.position;
 

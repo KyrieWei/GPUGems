@@ -5,10 +5,10 @@
 void voxelConeTracing::init(unsigned int SCR_WIDTH, unsigned int SCR_HEIGHT)
 {
 
-    graphics.init(SCR_WIDTH, SCR_HEIGHT);
-
     CornellScene cornellScene;
     cornellScene.init(SCR_WIDTH, SCR_HEIGHT);
+
+    graphics.init(SCR_WIDTH, SCR_HEIGHT, cornellScene);
     
     scene = std::make_shared<CornellScene>(cornellScene);
 }
@@ -28,12 +28,14 @@ void voxelConeTracing::run(GLFWwindow* window, Camera& camera, unsigned int SCR_
         lastFrame = currentFrame;
         processInput(window, deltaTime);
 
-        scene->update();
+        //scene->update();
         graphics.render(scene, camera, SCR_WIDTH, SCR_HEIGHT, Graphics::VOXELIZATION_VISUALIZATION);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    graphics.endFrame();
 
     glfwTerminate();
 }
